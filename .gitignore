@@ -2,14 +2,18 @@
 *.log
 *.cache
 *.tmp
-node_modules/
 vendor/
 .env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 
 # IDE specific
 .idea/
 .vscode/
 *.sublime-*
+.vscode-test
 
 # OS specific
 .DS_Store
@@ -17,4 +21,42 @@ Thumbs.db
 
 # Compiled files
 *.css.map
-*.js.map 
+*.js.map
+dist/
+build/
+.next
+out
+.nuxt
+
+# Node.js specific
+node_modules/
+jspm_packages/
+bower_components/
+.npm
+.yarn/
+.pnp.*
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+coverage/
+*.lcov
+.nyc_output
+
+# Cache directories
+.cache/
+.parcel-cache/
+.temp/
+.docusaurus
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock

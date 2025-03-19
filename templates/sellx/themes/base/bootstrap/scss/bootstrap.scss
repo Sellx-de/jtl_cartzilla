@@ -1,0 +1,61 @@
+// 1. Include functions first
+@use "sass:meta";
+@use "sass:map";
+@use "sass:string";
+
+// 2. Include functions and variables
+@use "../../../../node_modules/bootstrap/scss/functions" as *;
+@use "../../../../node_modules/bootstrap/scss/variables" as *;
+
+// 3. Define theme colors before maps
+$theme-colors: (
+    "primary": #0d6efd,
+    "secondary": #6c757d,
+    "success": #198754,
+    "info": #0dcaf0,
+    "warning": #ffc107,
+    "danger": #dc3545,
+    "light": #f8f9fa,
+    "dark": #212529
+);
+
+// 4. Include remaining Bootstrap components
+@use "../../../../node_modules/bootstrap/scss/maps" as *;
+@use "../../../../node_modules/bootstrap/scss/mixins" as *;
+@use "../../../../node_modules/bootstrap/scss/root" as *;
+
+// 5. Optional components
+@use "../../../../node_modules/bootstrap/scss/reboot" as *;
+@use "../../../../node_modules/bootstrap/scss/type" as *;
+@use "../../../../node_modules/bootstrap/scss/images" as *;
+@use "../../../../node_modules/bootstrap/scss/containers" as *;
+@use "../../../../node_modules/bootstrap/scss/grid" as *;
+@use "../../../../node_modules/bootstrap/scss/tables" as *;
+@use "../../../../node_modules/bootstrap/scss/forms" as *;
+@use "../../../../node_modules/bootstrap/scss/buttons" as *;
+@use "../../../../node_modules/bootstrap/scss/transitions" as *;
+@use "../../../../node_modules/bootstrap/scss/dropdown" as *;
+@use "../../../../node_modules/bootstrap/scss/button-group" as *;
+@use "../../../../node_modules/bootstrap/scss/nav" as *;
+@use "../../../../node_modules/bootstrap/scss/card" as *;
+@use "../../../../node_modules/bootstrap/scss/accordion" as *;
+@use "../../../../node_modules/bootstrap/scss/breadcrumb" as *;
+@use "../../../../node_modules/bootstrap/scss/pagination" as *;
+@use "../../../../node_modules/bootstrap/scss/badge" as *;
+@use "../../../../node_modules/bootstrap/scss/alert" as *;
+@use "../../../../node_modules/bootstrap/scss/progress" as *;
+@use "../../../../node_modules/bootstrap/scss/list-group" as *;
+@use "../../../../node_modules/bootstrap/scss/close" as *;
+@use "../../../../node_modules/bootstrap/scss/toasts" as *;
+@use "../../../../node_modules/bootstrap/scss/modal" as *;
+@use "../../../../node_modules/bootstrap/scss/tooltip" as *;
+@use "../../../../node_modules/bootstrap/scss/popover" as *;
+@use "../../../../node_modules/bootstrap/scss/carousel" as *;
+@use "../../../../node_modules/bootstrap/scss/spinners" as *;
+@use "../../../../node_modules/bootstrap/scss/offcanvas" as *;
+@use "../../../../node_modules/bootstrap/scss/placeholders" as *;
+
+// 6. Optionally include utilities API last
+@use "../../../../node_modules/bootstrap/scss/utilities/api" as *;
+
+@include bsBanner("");

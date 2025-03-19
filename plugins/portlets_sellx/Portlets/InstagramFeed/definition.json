@@ -1,0 +1,22 @@
+{
+    "name": "Instagram Feed",
+    "description": "Zeigt die letzten Instagram-Bilder an.",
+    "icon": "fas fa-camera",
+    "properties": {
+        "username": {
+            "type": "text",
+            "label": "Instagram Benutzername",
+            "default": ""
+        },
+        "password": {
+            "type": "password",
+            "label": "Instagram Passwort",
+            "default": ""
+        },
+        "limit": {
+            "type": "number",
+            "label": "Anzahl der Bilder",
+            "default": 5
+        }
+    }
+}

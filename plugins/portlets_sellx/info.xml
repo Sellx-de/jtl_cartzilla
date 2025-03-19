@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<jtlshopplugin>
+    <Name>Portlets by sellX</Name>
+    <Description>Fügt dem OnPage Composer neues Portlets hinzu.</Description>
+    <Author>sellx GmbH</Author>
+    <URL>https://sellx.de</URL>
+    <XMLVersion>100</XMLVersion>
+    <ShopVersion>5.0.0</ShopVersion>
+    <PluginID>portlets_sellx</PluginID>
+    <CreateDate>2023-08-16</CreateDate>
+    <Version>1.0.4</Version>
+    <Install>
+        <Portlets>
+            <Portlet>
+                <Title>CKategorie Card</Title>
+                <Class>CategoryCard</Class>
+                <Group>sellx Portlets</Group>
+                <Active>1</Active>
+            </Portlet>
+            <Portlet>
+                <Title>Instagram Feed</Title>
+                <Class>InstagramFeed</Class>
+                <Group>sellx Portlets</Group>
+                <Active>1</Active>
+            </Portlet>
+        </Portlets>
+    </Install>
+</jtlshopplugin>

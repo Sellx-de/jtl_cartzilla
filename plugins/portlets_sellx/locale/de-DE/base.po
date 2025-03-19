@@ -1,0 +1,2 @@
+msgid "Fügt dem OnPage Composer ein neues Portlet und diverse Blueprints hinzu."
+msgstr "Fügt dem OnPage Composer ein neues Portlet und diverse Blueprints hinzu."

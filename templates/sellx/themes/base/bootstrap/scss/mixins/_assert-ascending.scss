@@ -1,0 +1,11 @@
+@use "sass:meta";
+
+@mixin _assert-ascending($map, $map-name) {
+  $prev-num: null;
+  @each $key, $num in $map {
+    @if $prev-num != null and $num < $prev-num {
+      @error "Error: `#{$map-name}` values must be in ascending order.";
+    }
+    $prev-num: $num;
+  }
+}

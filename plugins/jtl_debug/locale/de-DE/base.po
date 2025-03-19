@@ -1,0 +1,245 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Optionen"
+msgstr "Optionen"
+
+msgid "general_name"
+msgstr "Allgemein"
+
+msgid "jtl_debug_show_on_query_string_name"
+msgstr "Nur bei GET-Parameter aktivieren?"
+
+msgid "jtl_debug_show_on_query_string_desc"
+msgstr "Zeigt Debug-Ausgabe nur, wenn GET-Parameter übergeben wird"
+
+msgid "jtl_debug_show_on_query_string_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_on_query_string_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_query_string_name"
+msgstr "Name des GET-Parameters"
+
+msgid "jtl_debug_query_string_desc"
+msgstr "Das Vorhandensein dieses Parameters wird geprüft (z.B."
+"http://example.com/mein-produkt?jtl-debug würde den Debugger anzeigen)"
+
+msgid "jtl_debug_save_cookie_name"
+msgstr "In Cookie speichern?"
+
+msgid "jtl_debug_save_cookie_desc"
+msgstr "Einmalige Eingabe des GET-Parameter reicht, anschließend bleibt die Ausgabe über"
+"Cookies aktiviert"
+
+msgid "jtl_debug_save_cookie_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_save_cookie_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_text_links_name"
+msgstr "Textlink zum Anzeigen/Ausblenden hinzufügen?"
+
+msgid "jtl_debug_show_text_links_desc"
+msgstr "praktisch beim Debugging auf iPad/iPhone"
+
+msgid "jtl_debug_show_text_links_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_text_links_value(N)"
+msgstr "Nein"
+
+msgid "output_name"
+msgstr "Ausgabe"
+
+msgid "jtl_debug_show_smarty_vars_name"
+msgstr "Anzeige von Smartyvariablen aktivieren?"
+
+msgid "jtl_debug_show_smarty_vars_desc"
+msgstr "In Smarty verfügbare Variablen werden im Debugfenster angezeigt"
+
+msgid "jtl_debug_show_smarty_vars_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_smarty_vars_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_loaded_templates_name"
+msgstr "Anzeige von geladenen Templates aktivieren?"
+
+msgid "jtl_debug_show_loaded_templates_desc"
+msgstr "Von Smarty geladene Templates werden im Debugfenster angezeigt"
+
+msgid "jtl_debug_show_loaded_templates_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_loaded_templates_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_hooks_name"
+msgstr "Anzeige aktiver Hooks aktivieren?"
+
+msgid "jtl_debug_show_hooks_desc"
+msgstr "Zeigt registrierte Hooks an"
+
+msgid "jtl_debug_show_hooks_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_hooks_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_errors_name"
+msgstr "Anzeige von PHP-Fehlern aktivieren?"
+
+msgid "jtl_debug_show_errors_desc"
+msgstr "Zeigt PHP-Fehler im Debugfenster an"
+
+msgid "jtl_debug_show_errors_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_errors_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_session_name"
+msgstr "Anzeige der Session aktivieren?"
+
+msgid "jtl_debug_show_session_desc"
+msgstr "Zeigt Inhalt der Variablen $_SESSION an"
+
+msgid "jtl_debug_show_session_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_session_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_post_name"
+msgstr "Anzeige des POST-Objekts aktivieren?"
+
+msgid "jtl_debug_show_post_desc"
+msgstr "Zeigt Inhalt der Variablen $_POST an"
+
+msgid "jtl_debug_show_post_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_post_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_get_name"
+msgstr "Anzeige des GET-Objekts aktivieren?"
+
+msgid "jtl_debug_show_get_desc"
+msgstr "Zeigt Inhalt der Variablen $_GET an"
+
+msgid "jtl_debug_show_get_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_get_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_cookie_name"
+msgstr "Anzeige des COOKIE-Objekts aktivieren?"
+
+msgid "jtl_debug_show_cookie_desc"
+msgstr "Zeigt den Inhalt der Variablen $_COOKIE an"
+
+msgid "jtl_debug_show_cookie_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_cookie_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_mem_usage_name"
+msgstr "Anzeige des Script-Speicherverbauchs aktivieren?"
+
+msgid "jtl_debug_show_mem_usage_desc"
+msgstr "Zeigt Speicherbedarf in MB an"
+
+msgid "jtl_debug_show_mem_usage_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_mem_usage_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_php_info_name"
+msgstr "Anzeige von phpinfo() aktivieren?"
+
+msgid "jtl_debug_show_php_info_desc"
+msgstr "Zeigt Informationen über PHP an"
+
+msgid "jtl_debug_show_php_info_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_php_info_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_cache_name"
+msgstr "Anzeige von Cache-Informationen aktivieren?"
+
+msgid "jtl_debug_show_cache_desc"
+msgstr "Zeigt Informationen über den JTLCache an"
+
+msgid "jtl_debug_show_cache_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_cache_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_nicedb_profiler_name"
+msgstr "Anzeige des NiceDB-Profilers aktivieren?"
+
+msgid "jtl_debug_show_nicedb_profiler_desc"
+msgstr "Zeigt Informationen über Datenbankqueries an (Achtung: nicht PROFILE_QUERIES_ECHO auf TRUE setzen!)"
+
+msgid "jtl_debug_show_nicedb_profiler_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_nicedb_profiler_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_plugin_profiler_name"
+msgstr "Anzeige des Plugin-Profilers aktivieren?"
+
+msgid "jtl_debug_show_plugin_profiler_desc"
+msgstr "Zeigt Informationen über ausgeführte Hooks an (Achtung: Ausgabe kann unvollständig sein)"
+
+msgid "jtl_debug_show_plugin_profiler_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_plugin_profiler_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_mail_smarty_vars_html_name"
+msgstr "Alle verfügbaren Smarty-Variablen in HTML-Body von Mails anhängen?"
+
+msgid "jtl_debug_show_mail_smarty_vars_html_desc"
+msgstr "Zeigt alle verfügbaren Smarty-Variablen im HTML-Emails an"
+
+msgid "jtl_debug_show_mail_smarty_vars_html_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_mail_smarty_vars_html_value(N)"
+msgstr "Nein"
+
+msgid "jtl_debug_show_mail_smarty_vars_text_name"
+msgstr "Alle verfügbaren Smarty-Variablen in Text-Body von Mails anhängen?"
+
+msgid "jtl_debug_show_mail_smarty_vars_text_desc"
+msgstr "Zeigt alle verfügbaren Smarty-Variablen im Text-Emails an"
+
+msgid "jtl_debug_show_mail_smarty_vars_text_value(Y)"
+msgstr "Ja"
+
+msgid "jtl_debug_show_mail_smarty_vars_text_value(N)"
+msgstr "Nein"
+
+msgid "Hilfe"
+msgstr "Hilfe"
+
+msgid "Variablen"
+msgstr "Variablen"
+
+msgid "Attention: Plugin JTL-Debug is currently active!"
+msgstr "Achtung: Plugin JTL-Debug ist derzeit aktiv!"

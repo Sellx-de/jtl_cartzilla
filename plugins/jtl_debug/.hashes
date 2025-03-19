@@ -1,0 +1,16 @@
+Util.php###3025204f1acd48b0564782d12858863a
+ErrorHandler.php###d517f020b7b19ed883bb9d0f15f320a8
+Debugger.php###d74b4e9708bb4c09de593297ee5d0bd4
+locale/en-GB/base.po###cfb166da23e0b99716367c9ac16bf261
+locale/en-GB/base.mo###6b272daad45152ca2c753fdec11baeb0
+locale/de-DE/base.po###f38005bed2bac522ab1dcda1dc279d12
+locale/de-DE/base.mo###a162c3e703f1dae87b1816aab34c47cc
+Bootstrap.php###27d1d804b71f1c7670f2772e4b6abdfb
+DebugMailRenderer.php###be7dfdd540c758f8d8a3dac47746e065
+README.md###bba5b4f113368cf99a362b46d8dfb274
+LICENSE.md###38dbddb655ba9219ce0946816199715d
+info.xml###3e3e5ed63581962c9f4bf3cfa5480407
+frontend/css/jtl-debug.css###2d5d8cf05e322e95a3041df891d19a2e
+frontend/js/jtl-debug.js###5670d88a6b5fa64ac76b993bfed4d4e1
+frontend/template/layout/footer.tpl###d400c80ea60587e56ffaf2a37d43b431
+frontend/template/empty.tpl###d41d8cd98f00b204e9800998ecf8427e

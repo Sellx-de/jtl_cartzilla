@@ -1,0 +1,41 @@
+msgid "Alert"
+msgstr "Hinweisfeld"
+
+msgid "a text"
+msgstr "Ein Text"
+
+msgid "a slider property"
+msgstr "Eine Slider-Eigenschaft"
+
+msgid "Hello world!"
+msgstr "Hallo Welt!"
+
+msgid "Alert Type"
+msgstr "Typ"
+
+msgid "Success"
+msgstr "Erfolg"
+
+msgid "Info"
+msgstr "Information"
+
+msgid "Warning"
+msgstr "Warnung"
+
+msgid "Danger"
+msgstr "Gefahr"
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Image set"
+msgstr "Image set"
+
+msgid "Icon"
+msgstr "Icon"
+
+msgid "Color"
+msgstr "Farbe"
+
+msgid "A date"
+msgstr "Ein Datum"

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jtlshopplugin>
+	<Name>JTL Plugin Bootstrapper</Name>
+	<Description>Erzeugt Grundgerüste für JTL-Shop-Plugins</Description>
+	<Author>Felix Moche</Author>
+	<URL>https://www.jtl-software.de</URL>
+	<XMLVersion>100</XMLVersion>
+	<MinShopVersion>5.2.0</MinShopVersion>
+	<PluginID>jtl_plugin_bootstrapper</PluginID>
+	<CreateDate>2023-04-04</CreateDate>
+	<Version>3.0.0</Version>
+	<Install>
+		<Adminmenu>
+			<Customlink sort="1">
+				<Name>Bootstrap</Name>
+			</Customlink>
+		</Adminmenu>
+	</Install>
+</jtlshopplugin>

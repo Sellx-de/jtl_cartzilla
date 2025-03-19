@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Smarty Debug auf Steroiden. Zum Aktivieren der Debug-Ausgabe im Frontend drücken Sie die Tastenkombination \"STRG + ENTER\""
+msgstr "Smarty Debug on steroids. Press \"CTRL + ENTER\" to activate the debugger output in the frontend."
+
+msgid "Optionen"
+msgstr "Options"
+
+msgid "Allgemein"
+msgstr "General"
+
+msgid "JTL Debug aktivieren?"
+msgstr "Enable JTL Debug?"
+
+msgid "Fügt die Ausgabe von JTL Debug auf jeder Seite hinzu"
+msgstr "Adds the JTL Debug output to any page"
+
+msgid "Ja"
+msgstr "Yes"
+
+msgid "Nein"
+msgstr "No"
+
+msgid "nur für Administratoren"
+msgstr "Only for administrators"
+
+msgid "Nur bei GET-Parameter aktivieren?"
+msgstr "Only activate with GET parameter?"
+
+msgid "Zeigt Debug-Ausgabe nur, wenn GET-Parameter übergeben wird"
+msgstr "Only shows the debug output when the GET parameter is present in the query"
+
+msgid "Name des GET-Parameters"
+msgstr "GET parameters name"
+
+msgid "Das Vorhandensein dieses Parameters wird geprüft (z.B. http://example.com/mein-produkt?jtl-debug würde den Debugger anzeigen)"
+msgstr "Checks for the existence of the GET parameter (e.g. http://example.com/mein-produkt?jtl-debug would show the debugger)"
+
+msgid "In Cookie speichern?"
+msgstr "Save in Cookie?"
+
+msgid "Einmalige Eingabe des GET-Parameter reicht, anschließend bleibt die Ausgabe über"
+       						"Cookies aktiviert"
+msgstr "An initial call with the GET parameter is sufficient to keep the debugger activated with Cookies"
+
+msgid "Textlink zum Anzeigen/Ausblenden hinzufügen?"
+msgstr "Add text link to show/hide?"
+
+msgid "praktisch beim Debugging auf iPad/iPhone"
+msgstr "Useful for debugging on e.g. iPad/iPhone"
+
+msgid "Ausgabe"
+msgstr "Output"
+
+msgid "Anzeige von Smartyvariablen aktivieren?"
+msgstr "Show Smarty variables?"
+
+msgid "In Smarty verfügbare Variablen werden im Debugfenster angezeigt"
+msgstr "Variables available in Smarty are shown in the debug window"
+
+msgid "Anzeige von geladenen Templates aktivieren?"
+msgstr "Show loaded templates?"
+
+msgid "Von Smarty geladene Templates werden im Debugfenster angezeigt"
+msgstr "Templates loaded by Smarty are shown in the debug window"
+
+msgid "Anzeige aktiver Hooks aktivieren?"
+msgstr "Show active hooks?"
+
+msgid "Zeigt registrierte Hooks an"
+msgstr "Show registered hooks"
+
+msgid "Anzeige von PHP-Fehlern aktivieren?"
+msgstr "Show PHP errors?"
+
+msgid "Zeigt PHP-Fehler im Debugfenster an"
+msgstr "Shows PHP errors in the debug window"
+
+msgid "Anzeige der Session aktivieren?"
+msgstr "Show session?"
+
+msgid "Zeigt Inhalt der Variablen $_SESSION an"
+msgstr "Shows the contents of the $_SESSION variable"
+
+msgid "Anzeige des POST-Objekts aktivieren?"
+msgstr "Show POST object?"
+
+msgid "Zeigt Inhalt der Variablen $_POST an"
+msgstr "Shows contents of the $_POST variable"
+
+msgid "Anzeige des GET-Objekts aktivieren?"
+msgstr "Show GET object?"
+
+msgid "Zeigt Inhalt der Variablen $_GET an"
+msgstr "Shows contents of the $_GET variable"
+
+msgid "Anzeige des COOKIE-Objekts aktivieren?"
+msgstr "Show COOKIE object?"
+
+msgid "Zeigt den Inhalt der Variablen $_COOKIE an"
+msgstr "Shows contents of the $_COOKIE variable"
+
+msgid "Anzeige des Script-Speicherverbauchs aktivieren?"
+msgstr "Show memory usage of current script?"
+
+msgid "Zeigt Speicherbedarf in MB an"
+msgstr "Shows memory usage in megabytes"
+
+msgid "Anzeige von phpinfo() aktivieren?"
+msgstr "Show phpinfo() ?"
+
+msgid "Zeigt Informationen über PHP an"
+msgstr "Shows information about PHP"
+
+msgid "Anzeige von Cache-Informationen aktivieren?"
+msgstr "Show cache informationen?"
+
+msgid "Zeigt Informationen über den JTLCache an"
+msgstr "Show informationen about the JTLCache"
+
+msgid "Anzeige des NiceDB-Profilers aktivieren?"
+msgstr "Show NiceDB profilers output?"
+
+msgid "Zeigt Informationen über Datenbankqueries an (Achtung: nicht PROFILE_QUERIES_ECHO auf TRUE setzen!)"
+msgstr "Show information about database queries (Attention: do not set PROFILE_QUERIES_ECHO to TRUE!)"
+
+msgid "Anzeige des Plugin-Profilers aktivieren?"
+msgstr "Show plugin profiler?"
+
+msgid "Zeigt Informationen über ausgeführte Hooks an (Achtung: Ausgabe kann unvollständig sein)"
+msgstr "Shows informations about executed hooks (Note: Output could be incomplete)"
+
+msgid "Alle verfügbaren Smarty-Variablen an Body von Mails anhängen?"
+msgstr "Show all available Smarty variables in email bodies?"
+
+msgid "Zeigt alle verfügbaren Smarty-Variablen im Emails an"
+msgstr "Shows all available Smarty variables in email bodies"
+
+msgid "Hilfe"
+msgstr "Help"
+
+msgid "Variablen"
+msgstr "Variables"
+
+msgid "Attention: Plugin JTL-Debug is currently active!"
+msgstr "Attention: Plugin JTL-Debug is currently active!"

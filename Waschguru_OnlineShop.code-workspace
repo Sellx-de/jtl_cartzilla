@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default",
+					"enableSsl": "Disabled"
+				},
+				"previewLimit": 50,
+				"server": "sillytoots.de",
+				"port": 3306,
+				"driver": "MariaDB",
+				"name": "Waschi",
+				"database": "d042c527",
+				"username": "d042c527"
+			}
+		]
+	}
+}

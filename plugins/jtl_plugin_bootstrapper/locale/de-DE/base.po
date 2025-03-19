@@ -1,0 +1,404 @@
+msgid "Erzeugt Grundgerüste für JTL-Shop-Plugins"
+msgstr "Erzeugt Grundgerüste für JTL-Shop-Plugins"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Template name"
+msgstr "Templatename"
+
+msgid "My tab"
+msgstr "Mein Tab"
+
+msgid "Template file"
+msgstr "Template-Datei"
+
+msgid "Enable on page types (0 for all page types)"
+msgstr "Aktiviert auf Seitentyp (0 für alle)"
+
+msgid "My great box"
+msgstr "Meine tolle Box"
+
+msgid "Config name"
+msgstr "Einstellungs-Name"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Initial value"
+msgstr "Anfangswert"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Selectbox"
+msgstr "Selectbox"
+
+msgid "Textarea"
+msgstr "Textarea"
+
+msgid "Checkbox"
+msgstr "Checkbox"
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Add item"
+msgstr "Wert hinzufügen"
+
+msgid "Example description"
+msgstr "Hiermit stellt man etwas ein"
+
+msgid "Option no. x"
+msgstr "Option Nummer X"
+
+msgid "File name"
+msgstr "Dateiname"
+
+msgid "(highest)"
+msgstr "(höchste)"
+
+msgid "(default)"
+msgstr "(Standard)"
+
+msgid "(lowest)"
+msgstr "(niedrigste)"
+
+msgid "Priority"
+msgstr "Priorität"
+
+msgid "Template (leave empty when using FullScreenTemplate)"
+msgstr "Template (leer lassen, wenn FullScreenTemplate genutzt werden soll)"
+
+msgid "FullscreenTemplate? (leave empty when not using it)"
+msgstr "FullscreenTemplate? (leer lassen, wenn nicht gewünscht)"
+
+msgid "Only visible after login?"
+msgstr "Nur sichtbar noch Login?"
+
+msgid "Print button"
+msgstr "Drucken-Button"
+
+msgid "SSL encryption"
+msgstr "SSL-Verschlüsselung"
+
+msgid "Link group"
+msgstr "Linkgruppe"
+
+msgid "SEO URL"
+msgstr "Seo-URL"
+
+msgid "Link name"
+msgstr "Linkname"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Meta Title"
+msgstr "Meta Title"
+
+msgid "Meta Keywords"
+msgstr "Meta Keywords"
+
+msgid "Meta Description"
+msgstr "Meta Description"
+
+msgid "Hook"
+msgstr "Hook"
+
+msgid "Position"
+msgstr "Position"
+
+msgid "Head"
+msgstr "Head"
+
+msgid "Body"
+msgstr "Body"
+
+msgid "Value (german)"
+msgstr "Wert (Deutsch)"
+
+msgid "Value (english)"
+msgstr "Wert (Englisch)"
+
+msgid "My description"
+msgstr "Meine Beschreibung"
+
+msgid "German translation"
+msgstr "Deutsche Übersetzung"
+
+msgid "English translation"
+msgstr "Englische Übersetzung"
+
+msgid "Enabled"
+msgstr "Aktiv"
+
+msgid "Module-ID (no underscores)"
+msgstr "Modul-ID (keine Unterstriche)"
+
+msgid "Subject"
+msgstr "Betreff"
+
+msgid "Content (HTML)"
+msgstr "Inhalt (HTML)"
+
+msgid "Content (text)"
+msgstr "Inhalt (Text)"
+
+msgid "Add AKZ?"
+msgstr "Anbieter-Kennzeichnung hinzufügen?"
+
+msgid "Add AGB?"
+msgstr "AGB hinzufügen?"
+
+msgid "Add WRB?"
+msgstr "WRB hinzufügen?"
+
+msgid "Add MWRF?"
+msgstr "Muster-Widerrufsformular hinzufügen?"
+
+msgid "Enabled? (1=yes, 0=no)"
+msgstr "Aktiviert? (1=ja, 0=nein)"
+
+msgid "Value"
+msgstr "Wert"
+
+msgid "Class name"
+msgstr "Klassenname"
+
+msgid "Expanded? (1=yes, 0=no)"
+msgstr "Expandiert? (1=ja, 0=nein)"
+
+msgid "Successfully created plugin %s at %s"
+msgstr "Plugin %s erfolgreich erstellt in %s"
+
+msgid "Load existing legacy plugin"
+msgstr "Bestehendes Legacy-Plugin laden"
+
+msgid "Load existing plugin"
+msgstr "Bestehendes Plugin laden"
+
+msgid "No write permissions in plugins dir"
+msgstr "Keine Schreibrechte im Plugin-Ordner!"
+
+msgid "Path (relative to includes/plugins/)"
+msgstr "Pfad (relativ zu includes/plugins/)"
+
+msgid "Load plugin"
+msgstr "Plugin laden"
+
+msgid "General"
+msgstr "Allgemein"
+
+msgid "Language variables"
+msgstr "Sprachvariablen"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Frontend links"
+msgstr "Frontendlinks"
+
+msgid "Backend links"
+msgstr "Backendlinks"
+
+msgid "JavaScript"
+msgstr "JavaScript"
+
+msgid "CSS"
+msgstr "CSS"
+
+msgid "Boxes"
+msgstr "Boxen"
+
+msgid "Email templates"
+msgstr "Email-Templates"
+
+msgid "Widgets"
+msgstr "Widgets"
+
+msgid "Confirm"
+msgstr "Abschließen"
+
+msgid "Plugin name"
+msgstr "Pluginname"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Author"
+msgstr "Autor"
+
+msgid "Homepage"
+msgstr "Homepage"
+
+msgid "Icon (has to be placed in plugin root dir)"
+msgstr "Icon (muss im Hauptverzeichnis platziert werden)"
+
+msgid "Cache tags to be invalidated on installation"
+msgstr "Cache-Tags bei Installation löschen"
+
+msgid "Minimum shop version"
+msgstr "Mindestversion JTL-Shop"
+
+msgid "Maximum shop version"
+msgstr "Maximalversion JTL-Shop"
+
+msgid "Crete migrations for existing tables (multiple separated by colon):"
+msgstr "Migrationen für bestehende Tabellen erstellen (mehrere getrennt mit Komma):"
+
+msgid "Create models?"
+msgstr "Models erstellen?"
+
+msgid "Add hook"
+msgstr "Hook hinzufügen"
+
+msgid "Add language variable"
+msgstr "Sprachvariable hinzufügen"
+
+msgid "Add setting"
+msgstr "Einstellung hinzufügen"
+
+msgid "Add frontend link"
+msgstr "Frontendlink hinzufügen"
+
+msgid "Add backend link"
+msgstr "Backendlink hinzufügen"
+
+msgid "Add JavaScript"
+msgstr "JavaScript hinzufügen"
+
+msgid "Add CSS"
+msgstr "CSS hinzufügen"
+
+msgid "Add box"
+msgstr "Box hinzufügen"
+
+msgid "Add email template"
+msgstr "Email-Template hinzufügen"
+
+msgid "Add widget"
+msgstr "Widget hinzufügen"
+
+msgid "back"
+msgstr "zurück"
+
+msgid "continue"
+msgstr "weiter"
+
+msgid "Create plugin"
+msgstr "Plugin erstellen"
+
+msgid "Create new plugin"
+msgstr "Neues Plugin erstellen"
+
+msgid "Plugin name must not be empty."
+msgstr "Plugin-Name darf nicht leer sein."
+
+msgid "Plugin description must not be empty."
+msgstr "Plugin-Beschreibung darf nicht leer sein."
+
+msgid "Plugin author must not be empty."
+msgstr "Plugin-Autor darf nicht leer sein."
+
+msgid "Plugin homepage must not be empty."
+msgstr "Plugin-Homepage darf nicht leer sein."
+
+msgid "Plugin ID must not be empty."
+msgstr "Plugin-ID darf nicht leer sein."
+
+msgid "Plugin dir could not be generated."
+msgstr "Pluginordner konnte nicht generiert werden."
+
+msgid "Could not create dir %s."
+msgstr "Konnte Verzeichnis %s nicht erstellen."
+
+msgid "Could not delete dir %s."
+msgstr "Konnte Verzeichnis %s nicht löschen."
+
+msgid "Could not create file %s."
+msgstr "Konnte Datei %s nicht erstellen."
+
+msgid "Created file %s"
+msgstr "Datei %s erstellt"
+
+msgid "Successfully created plugin %s in %s."
+msgstr "Plugin %s in %s erfolgreich erstellt."
+
+msgid "Add another setting?"
+msgstr "Weitere Einstellung hinzufügen?"
+
+msgid "Add setting?"
+msgstr "Einstellung hinzufügen?"
+
+msgid "Add link?"
+msgstr "Link hinzufügen?"
+
+msgid "Add another link?"
+msgstr "Weiteren Link hinzufügen?"
+
+msgid "Slug"
+msgstr "URL-Pfad"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Week"
+msgstr "Week"
+
+msgid "Time"
+msgstr "Time"
+
+msgid "Tel"
+msgstr "Tel"
+
+msgid "Range"
+msgstr "Range"
+
+msgid "Colorpicker"
+msgstr "Colorpicker"
+
+msgid "Option X"
+msgstr "Auswahlmöglichkeit X"
+
+msgid "Create migrations for tables (comma separated)?"
+msgstr "Migrationen für folgende Tabellen erstellen (kommasepariert)"
+
+msgid "Hooks to use (numbers only, comma separated)"
+msgstr "Verwendete Hooks (nur Zahlen, kommasepariert)"
+
+msgid "JavaScript files to create (comma separated)"
+msgstr "JavaScript-Dateien (kommasepariert)"
+
+msgid "CSS files to create (comma separated)"
+msgstr "CSS-Dateien (kommasepariert)"
+
+msgid "Delete existing plugin?"
+msgstr "Bestehendes Plugin ggf. löschen?"
+
+msgid "Create plugin zip"
+msgstr "Zipdatei aus Plugin erstellen"
+
+msgid "Create zip file"
+msgstr "Zipdatei erstellen"
+
+msgid "Path (relative to plugins/)"
+msgstr "Pfad (relativ zu plugins/)"
+
+msgid "Invalid path."
+msgstr "Ungültiger Pfad."
+
+msgid "Could not create zip file."
+msgstr "Konnte Zipdatei nicht erstellen."

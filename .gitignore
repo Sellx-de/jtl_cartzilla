@@ -1,0 +1,20 @@
+# JTL-Shop specific
+*.log
+*.cache
+*.tmp
+node_modules/
+vendor/
+.env
+
+# IDE specific
+.idea/
+.vscode/
+*.sublime-*
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.css.map
+*.js.map 

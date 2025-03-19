@@ -1,0 +1,36 @@
+// _user-variables.scss
+// Use this to override Bootstrap and Cartzilla variables
+//
+// Example of a variable override to change Cartzilla background color
+// Remove the "//" to enable variables and apply the changes
+//
+// $body-bg: #f9fafb;
+// $body-bg-dark: #111827;
+// Inside src/scss/_user-variables.scss
+
+$primary: #0066cc; // New primary color for all modes
+$background-dark: #101010 !default; // New background color for dark mode
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-caret:                true !default;
+$enable-rounded:              true !default;
+$enable-shadows:              true !default;
+$enable-gradients:            true !default;
+$enable-transitions:          true !default;
+$enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
+$enable-grid-classes:         true !default;
+$enable-container-classes:    true !default;
+$enable-cssgrid:              false !default;
+$enable-button-pointers:      true !default;
+$enable-rfs:                  true !default;
+$enable-validation-icons:     true !default;
+$enable-negative-margins:     false !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities:  true !default;
+
+$enable-dark-mode:            true !default;
+$color-mode-type:             data !default; // `data` or `media-query`

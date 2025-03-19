@@ -1,0 +1,91 @@
+@import '../../base/fontawesome/scss/fontawesome';
+@import '../../base/fontawesome/scss/brands';
+@import '../../base/fontawesome/scss/regular';
+@import '../../base/fontawesome/scss/solid';
+@import '../base/nouislider.min.css';
+@import '../base/slick/slick-lightbox.css';
+@import '../../js/password/password.min.css';
+
+// bootstrap
+@import '../../bootstrap/bootstrap';
+@import '../../base/bootstrap-select/bootstrap-select';
+
+/* consent */
+@import '../../base/consent/consent';
+
+// fileinput
+@import '../../base/fileinput/fileinput.min';
+
+// wow animation
+@import '../base/wow/animate.css';
+
+// slider
+@import '../base/slider/slider.css';
+
+// datatables
+@import '../libraries/datatables.min.css';
+
+// theme mixins
+@import '../../base/sass/mixins';
+
+// theme fonts
+@import 'fonts';
+
+// NOVA relies on some BS stuff that is not included anymore in BS5
+@import 'nova-bootstrap/variables';
+@import 'nova-bootstrap/functions';
+// It is OK to import variables from NOVA BS, because they will not overwrite existing variables
+@import '../../base/bootstrap/scss/functions';
+@import '../../base/bootstrap/scss/variables';
+@import '../../base/bootstrap/scss/mixins';
+@import '../../base/bootstrap/scss/_custom-forms';
+
+// components
+@import '../../base/sass/components/all';
+
+// theme base
+@import '../../base/sass/base';
+
+/* utilities */
+@import '../../base/sass/utilities/all';
+
+/* productlist */
+@import '../../base/sass/productlist';
+
+/* productdetails */
+@import '../../base/sass/productdetails';
+
+/* comparelist */
+@import '../../base/sass/comparelist';
+
+/* footer */
+@import '../../base/sass/footer';
+
+/* account */
+@import '../../base/sass/account';
+
+/* basket */
+@import '../../base/sass/basket';
+
+/* contact */
+@import '../../base/sass/contact';
+
+/* newsletter */
+@import '../../base/sass/newsletter';
+
+/* checkout */
+@import '../../base/sass/checkout';
+
+/* register */
+@import '../../base/sass/register';
+
+/* selectionwizard */
+@import '../../base/sass/selectionwizard';
+
+/* snippets */
+@import '../../base/sass/snippets';
+
+@import 'buttons';
+
+// Icon font
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");

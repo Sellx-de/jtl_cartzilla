@@ -118,7 +118,14 @@
                         {/if}
                     {/block}
                 </style>
+                
+                <!-- Cartzilla Navbar CSS -->
+                <link rel="stylesheet" href="{$ShopURL}/{$templateDir}/themes/default/custom-navbar.css?v={$nTemplateVersion}">
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Changa+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
             {/block}
+            
             {* css *}
             {if $Einstellungen.template.general.use_minify === 'N'}
                 {foreach $cCSS_arr as $cCSS}
@@ -307,9 +314,9 @@
         {/foreach}
 
         {if file_exists($currentTemplateDirFullPath|cat:'js/custom.js')}
-            <script defer src="{$ShopURL}/{$templateDir}js/custom.js?v={$nTemplateVersion}"></script>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/custom.js?v={$nTemplateVersion}" as="script" crossorigin>
         {/if}
-<link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/theme-switcher.js" as="script" crossorigin>
+
         {getUploaderLang iso=$smarty.session.currentLanguage->getIso639()|default:'' assign='uploaderLang'}
 
         {block name='layout-header-head-resources-preload'}
@@ -317,19 +324,17 @@
             <link href="{$ShopURL}/{$templateDir}themes/base/bootstrap/css/bootstrap-reboot.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
             <link href="{$ShopURL}/{$templateDir}themes/base/bootstrap/css/bootstrap-utilities.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
             <link href="{$ShopURL}/{$templateDir}themes/base/bootstrap/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-            
-            <link href="{$ShopURL}/{$templateDir}themes/default/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+             <link href="{$ShopURL}/{$templateDir}themes/base/css/theme.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+            <link href="{$ShopURL}/{$templateDir}themes/base/css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-            <link href="{$ShopURL}/{$templateDir}themes/base/css/fonts.css" as="style">
-            <link rel="preload" href="{$ShopURL}/{$templateDir}themes/base/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
-            <link rel="preload" href="{$ShopURL}/{$templateDir}themes/base/fonts/inter-variable-latin-ext.woff2" as="font" type="font/woff2" crossorigin="">
-            <link href="{$ShopURL}/{$templateDir}themes/base/fonts/title.ttf" as="font" type="font/ttf" crossorigin="">
+            <link rel="preload" href="{$ShopURL}/{$templateDir}assets/fonts/inter-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+            <link rel="preload" href="{$ShopURL}/{$templateDir}assets/fonts/inter-variable-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+            <link href="{$ShopURL}/{$templateDir}assets/fonts/title.ttf" as="font" type="font/ttf" crossorigin="">
                 
-            <link href="{$ShopURL}/{$templateDir}themes/base/icons/webfonts/cartzilla-icons.woff2" as="font" type="font/woff2" crossorigin/>
-            <link rel="stylesheet" href="{$ShopURL}/{$templateDir}themes/base/icons/webfonts/cartzilla-icons.min.css">
-            <link href="{$ShopURL}/{$templateDir}themes/base/fontawesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin/>
-            <link href="{$ShopURL}/{$templateDir}themes/base/fontawesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin/>
-            <link href="{$ShopURL}/{$templateDir}themes/base/css/theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+            <link rel="preload" href="{$ShopURL}/{$templateDir}assets/icons/cartzilla-icons.woff2" as="font" type="font/woff2" crossorigin>
+            <link rel="stylesheet" href="{$ShopURL}/{$templateDir}assets/icons/cartzilla-icons.min.css">
+            <link rel="preload" href="{$ShopURL}/{$templateDir}assets/fonts/fontawesome/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+            <link rel="preload" href="{$ShopURL}/{$templateDir}assets/fonts/fontawesome/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin>
         {/block}
         {block name='layout-header-head-resources-modulepreload'}
             <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/app/globals.js" as="script" crossorigin>
@@ -337,16 +342,25 @@
             <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/app/plugins/navscrollbar.js" as="script" crossorigin>
             <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/app/plugins/tabdrop.js" as="script" crossorigin>
             <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/app/views/header.js" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/theme-switcher.js" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/glightbox.js" as="script" crossorigin>
+
             <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/app/views/productdetails.js" as="script" crossorigin>
-            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/theme.min.js" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/components/swiper.min.js"" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/components/simplebar.min.js"" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/components/choices.min.js" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/components/nouislider.min.js" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/components/list.min.js"" as="script" crossorigin>
+            <link rel="modulepreload" href="{$ShopURL}/{$templateDir}js/theme.min.js" as="script" as="script" crossorigin>
+
             
         {/block}
         {if !empty($oUploadSchema_arr)}
-            <script defer src="{$ShopURL}/{$templateDir}js/tooltip.js"></script>
-            <script defer src="{$ShopURL}/{$templateDir}themes/base/js/theme.min.js"></script>
             <script defer src="{$ShopURL}/{$templateDir}js/fileinput/fileinput.min.js"></script>
             <script defer src="{$ShopURL}/{$templateDir}js/fileinput/themes/fas/theme.min.js"></script>
             <script defer src="{$ShopURL}/{$templateDir}js/fileinput/locales/{$uploaderLang}.js"></script>
+            
+             
         {/if}
         {if $Einstellungen.preisverlauf.preisverlauf_anzeigen === 'Y' && !empty($bPreisverlauf)}
             <script defer src="{$ShopURL}/{$templateDir}js/Chart.bundle.min.js"></script>
@@ -356,7 +370,7 @@
                 <script defer src="{$ShopURL}/{$templateDir}js/DataTables/datatables.min.js"></script>
             {/if}
         {/block}
-
+        <link href="{$ShopURL}/{$templateDir}css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <script type="module" src="{$ShopURL}/{$templateDir}js/app/app.js"></script>
         <script>(function(){
             // back-to-list-link mechanics
@@ -434,86 +448,40 @@
             {/block}
         {/if}
 
-        {block name='layout-header-header'}
-        
-            {$headerWidth=$Einstellungen.template.header.header_full_width}
-            {if (($Einstellungen.template.header.menu_scroll !== 'menu' && $Einstellungen.template.header.menu_single_row === 'Y')
-                    || $Einstellungen.template.header.menu_single_row === 'N'
-                )
-                && $Einstellungen.template.header.menu_show_topbar === 'Y'
-                && $nSeitenTyp !== $smarty.const.PAGE_BESTELLVORGANG}
-                {block name='layout-header-branding-top-bar'}
-                    <div id="header-top-bar" class="bg-dark text-white rounded-0 py-2 px-0 m-0 fade show" data-bs-theme="dark">
+            {block name='layout-header-header'}
+                    <div class="alert alert-dismissible bg-dark text-white rounded-0 py-2 m-0 fade show" style="padding-right: 9rem" data-bs-theme="dark">
                         <div class="container position-relative d-flex min-w-0">
-                            {include file='layout/header_top_bar.tpl'}
+                            <div class="d-flex flex-nowrap align-items-center g-2 w-100 min-w-0 mx-auto mt-n1" style="height: 37px;margin-left: auto;margin-right: auto">
+                                {block name='layout-header-menu-single-row-top-bar-outer-include-header-top-bar'}
+                                    {include file='layout/header_top_bar.tpl'}
+                                {/block}
+                            </div>
                         </div>
                     </div>
-                {/block}
-            {/if}
-            
-            <header class="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0
-                        {if (!$isMobile || $Einstellungen.template.header.mobile_search_type !== 'fixed') && $Einstellungen.template.header.menu_scroll !== 'none'}sticky-top{/if}
-                        fixed-navbar theme-{$Einstellungen.template.theme.theme_default}"
-                    id="jtl-nav-wrapper">
-                {if $Einstellungen.template.header.menu_single_row === 'Y'}
+
+                <header class="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0" data-sticky-navbar='{literal}{"offset": 500}{/literal}'>
                     {block name='layout-header-include-header-menu-single-row'}
                         {include file='layout/header_menu_single_row.tpl'}
                     {/block}
-                {else}
-                    {block name='layout-header-container-inner'}
-                        <div class="{if $headerWidth === 'B'}container{else}container-fluid {if $headerWidth === 'N'}container-fluid-xl{/if}{/if}">
-                        {block name='layout-header-category-nav'}
-                            {block name='layout-header-category-nav-logo'}
-                                {include file='layout/header_logo.tpl'}
-                            {/block}
-                            {navbar toggleable=true fill=true type="expand-lg" class="justify-content-start {if $nSeitenTyp === $smarty.const.PAGE_BESTELLVORGANG}align-items-center-util{else}align-items-lg-end{/if}"}
-                                {if $nSeitenTyp === $smarty.const.PAGE_BESTELLVORGANG}
-                                    {block name='layout-header-secure-checkout'}
-                                        <div class="secure-checkout-icon ml-auto-util ml-lg-0">
-                                            {block name='layout-header-secure-checkout-title'}
-                                                <i class="fas fa-lock icon-mr-2"></i>{lang key='secureCheckout' section='checkout'}
-                                            {/block}
-                                        </div>
-                                        <div class="secure-checkout-topbar ml-auto-util d-none d-lg-block">
-                                            {block name='layout-header-secure-include-header-top-bar'}
-                                                {include file='layout/header_top_bar.tpl'}
-                                            {/block}
-                                        </div>
-                                    {/block}
-                                {else}
-                                    {block name='layout-header-branding-shop-nav'}
-                                        {include file='layout/header_nav_icons.tpl'}
-                                    {/block}
-
-                                    {block name='layout-header-include-categories-mega'}
-                                        {include file='layout/header_categories.tpl' menuMultipleRows=false}
-                                    {/block}
-                                {/if}
-                            {/navbar}
-                        {/block}
-                        </div>
+                    {block name='layout-header-search'}
+                        {if $Einstellungen.template.header.mobile_search_type === 'fixed'}
+                            <div class="d-lg-none search-form-wrapper-fixed container-fluid container-fluid-xl order-1">
+                                {include file='snippets/search_form.tpl' id='search-header-mobile-top'}
+                            </div>
+                        {/if}
                     {/block}
-                {/if}
-                {block name='layout-header-search'}
-                    {if $Einstellungen.template.header.mobile_search_type === 'fixed'}
-                        <div class="d-lg-none search-form-wrapper-fixed container-fluid container-fluid-xl order-1">
-                            {include file='snippets/search_form.tpl' id='search-header-mobile-top'}
+                </header>
+                {block name='layout-header-search-fixed'}
+                    {if $Einstellungen.template.header.mobile_search_type === 'fixed' && $isMobile}
+                        <div class="container-fluid container-fluid-xl fixed-search fixed-top smoothscroll-top-search d-lg-none d-none">
+                            {include file='snippets/search_form.tpl' id='search-header-mobile-fixed'}
                         </div>
                     {/if}
                 {/block}
-            </header>
-            {block name='layout-header-search-fixed'}
-                {if $Einstellungen.template.header.mobile_search_type === 'fixed' && $isMobile}
-                    <div class="container-fluid container-fluid-xl fixed-search fixed-top smoothscroll-top-search d-lg-none d-none">
-                        {include file='snippets/search_form.tpl' id='search-header-mobile-fixed'}
-                    </div>
-                {/if}
             {/block}
-        {/block}
-    {/if}
+        {/if}
 
     {block name='layout-header-main-wrapper-starttag'}
-        <main id="main-wrapper" class="{if $bExclusive} exclusive{/if}{if $hasLeftPanel} aside-active{/if}">
         {opcMountPoint id='opc_before_main' inContainer=false}
     {/block}
 
@@ -534,26 +502,28 @@
 
     {block name='layout-header-content-all-starttags'}
         {block name='layout-header-content-wrapper-starttag'}
-            <div id="content-wrapper"
-                 class="{if ($Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive) || $smarty.const.PAGE_ARTIKELLISTE === $nSeitenTyp}has-left-sidebar container-fluid container-fluid-xl{/if}
-                 {if $smarty.const.PAGE_ARTIKELLISTE === $nSeitenTyp}is-item-list{/if}
-                        {if $isFluidBanner || $isFluidSlider} has-fluid{/if}">
+            <div id="content-wrapper">
         {/block}
 
         {block name='layout-header-breadcrumb'}
-            {container fluid=(($Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive) || $smarty.const.PAGE_ARTIKELLISTE === $nSeitenTyp || (isset($Link) && $Link->getIsFluid())) class="breadcrumb-container"}
+            <nav class="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
                 {include file='layout/breadcrumb.tpl'}
-            {/container}
+            </nav>
         {/block}
 
         {block name='layout-header-content-starttag'}
-            <div id="content">
+            <main class="content-wrapper">
         {/block}
 
         {if !$bExclusive && $boxes.left !== null && !empty(trim(strip_tags($boxes.left))) && (($Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive) || $smarty.const.PAGE_ARTIKELLISTE === $nSeitenTyp)}
             {block name='layout-header-content-productlist-starttags'}
-                <div class="row justify-content-lg-end">
-                    <div class="col-lg-8 col-xl-9 ml-auto-util ">
+                <div class="container">
+                    {opcMountPoint id='opc_before_heading'}
+                    <h1 class="h3 pb-3 pb-lg-4">{$oNavigationsinfo->getName()}</h1>
+                </div>
+                <section class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
             {/block}
         {/if}
 

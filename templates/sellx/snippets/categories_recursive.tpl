@@ -41,19 +41,11 @@
                         {/if}
                         {if $hasItems}
                             {block name='snippets-categories-recursive-categories-has-items'}
-                                <li class="nav-item {if $hasItems}dropdown{/if} {if $category->getID() == $activeId
+                                <li class="nav-item mb-1 {if $category->getID() == $activeId
                                     || (isset($activeParent)
-                                        && $activeParent->getID() === $category->getID())}active{/if}">
+                                        && $activeParent->getID() === $category->getID())}{/if}">
                                     {block name='snippets-categories-recursive-categories-has-items-link'}
-                                        <span class="nav-link {if $i !== 0}snippets-categories-nav-link-child{/if} dropdown-toggle"
-                                              role="button"
-                                              data-toggle="collapse" data-bs-toggle="collapse"
-                                              data-target="#category_box_{$category->getID()}_{$i}-{$id}" data-bs-target="#category_box_{$category->getID()}_{$i}-{$id}"
-                                              aria-expanded="{if $category->getID() == $activeId
-                                                   || (isset($activeParent)
-                                                   && $activeParent->getID() === $category->getID())}true{else}false{/if}">
-                                            <a href="{$category->getURL()}" onclick="event.stopPropagation();">{$category->getShortName()}</a>
-                                        </span>
+                                            <a class="nav-link d-block fw-normal p-0" href="{$category->getURL()}" onclick="event.stopPropagation();">{$category->getShortName()}</a>
                                     {/block}
                                     {block name='snippets-categories-recursive-categories-has-items-nav'}
                                         {collapse id="category_box_{$category->getID()}_{$i}-{$id}"
@@ -90,10 +82,9 @@
                             {block name='snippets-categories-recursive-has-not-items'}
                                 {navitem class="{if $category->getID() == $activeId
                                         || (isset($activeParent)
-                                        && $activeParent->getID() === $category->getID())} active{/if}"
+                                        && $activeParent->getID() === $category->getID())}  mb-1{/if}"
                                     href=$category->getURL()
-                                    router-class="{if $i !== 0}snippets-categories-nav-link-child{/if}"
-                                }
+                                    router-class="{if $i !== 0}snippets-categories-nav-link-child{/if}"}
                                     {$category->getShortName()}
                                 {/navitem}
                             {/block}

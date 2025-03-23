@@ -26,146 +26,77 @@
                 {get_category_parents categoryId=$activeId assign='activeParents'}
             {/if}
             {block name='snippets-categories-mega-categories-inner'}
-            {foreach $categories as $category}
-                {if isset($activeParents) && is_array($activeParents) && isset($activeParents[$i])}
-                    {assign var=activeParent value=$activeParents[$i]}
-                {/if}
-                {if $category->isOrphaned() === false}
-                    {if $category->hasChildren()}
-                        {block name='snippets-categories-mega-category-child'}
-                            <li class="nav-item nav-scrollbar-item dropdown dropdown-full
-                                {if $Einstellungen.template.megamenu.show_categories === 'mobile'} d-lg-none
-                                {elseif $Einstellungen.template.megamenu.show_categories === 'desktop'} d-none d-lg-inline-block {/if}
-                                {if $category->getID() === $activeId
-                            || (isset($activeParent)
-                                && $activeParent->getID() === $category->getID())} active{/if}">
-                                {link href=$category->getURL()
-                                    title=$category->getName()|escape:'html'
-                                    class="nav-link dropdown-toggle"
-                                    target="_self"
-                                    data=["category-id"=>$category->getID()]}
-                                    <span class="nav-mobile-heading">{$category->getShortName()}</span>
-                                {/link}
-                                <div class="dropdown-menu" data-bs-popper="static">
-                                    <div class="dropdown-body">
-                                        {container class="subcategory-wrapper"}
-                                            {row class="lg-row-lg nav"}
-                                                {col lg=4 xl=3 class="nav-item-lg-m nav-item dropdown d-lg-none"}
-                                                    {link href=$category->getURL()}
-                                                        <strong class="nav-mobile-heading">{lang key='menuShow' printf=$category->getShortName()}</strong>
-                                                    {/link}
-                                                {/col}
-                                                {block name='snippets-categories-mega-sub-categories'}
-                                                    {if $category->hasChildren()}
-                                                        {if !empty($category->getChildren())}
-                                                            {assign var=sub_categories value=$category->getChildren()}
-                                                        {else}
-                                                            {get_category_array categoryId=$category->getID() assign='sub_categories'}
-                                                        {/if}
-                                                        {foreach $sub_categories as $sub}
-                                                            {col lg=4 xl=3 class="nav-item-lg-m nav-item {if $sub->hasChildren()}dropdown{/if}"}
-                                                                {block name='snippets-categories-mega-category-child-body-include-categories-mega-recursive'}
-                                                                    {include file='snippets/categories_mega_recursive.tpl' mainCategory=$sub firstChild=true subCategory=$i + 1}
-                                                                {/block}
-                                                            {/col}
-                                                        {/foreach}
-                                                    {/if}
-                                                {/block}
-                                            {/row}
-                                        {/container}
-                                    </div>
-                                </div>
-                            </li>
-                        {/block}
-                    {else}
-                        {block name='snippets-categories-mega-category-no-child'}
-                            {navitem href=$category->getURL() title=$category->getName()|escape:'html'
-                                class="nav-scrollbar-item {if $Einstellungen.template.megamenu.show_categories === 'mobile'} d-lg-none
-                                    {elseif $Einstellungen.template.megamenu.show_categories === 'desktop'} d-none d-lg-inline-block {/if}
-                                    {if $category->getID() === $activeId}active{/if}"
-                                data=["category-id"=>$category->getID()]}
-                                <span class="text-truncate d-block">{$category->getShortName()}</span>
-                            {/navitem}
-                        {/block}
+
+             
+                {foreach $categories as $category}
+                    {if isset($activeParents) && is_array($activeParents) && isset($activeParents[$i])}
+                        {assign var=activeParent value=$activeParents[$i]}
                     {/if}
-                {/if}
-            {/foreach}
+                    {if $category->isOrphaned() === false}
+                       
+                            {if $category->hasChildren()}
+                                {if !empty($category->getChildren())}
+                                    {assign var=sub_categories value=$category->getChildren()}
+                                {else}
+                                    {get_category_array categoryId=$category->getID() assign='sub_categories'}
+                                {/if}
+<div class="col-lg-2">
+                                    {foreach $sub_categories as $sub}
+                                        <ul class="nav flex-column gap-2 mt-0">
+                                            <li class="d-flex w-100 pt-1">
+                                                <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="{$sub->getURL()}">{$sub->getName()}</a>
+                                            </li>
+                                        </ul>
+                                    {/foreach}
+                                   
+
+                                        <a class="d-inline-flex animate-underline h6 text-dark-emphasis text-decoration-none mb-2" href="{$category->getURL()}">
+                                            <span class="animate-target">{lang key='showAll'}</span>	
+                                        </a>
+ </div>
+                            {/if}
+                        
+                    {/if}
+                {/foreach}
             {/block}
         {/if}
     {/if}
-    {/block}{* /megamenu-categories*}
+    {/block}
 
     {block name='snippets-categories-mega-manufacturers'}
     {if $Einstellungen.template.megamenu.show_manufacturers !== 'N'
         && ($Einstellungen.global.global_sichtbarkeit != 3 || JTL\Session\Frontend::getCustomer()->getID() > 0)}
         {get_manufacturers assign='manufacturers'}
         {if !empty($manufacturers)}
-            {assign var=manufacturerOverview value=null}
-            {if isset($oSpezialseiten_arr[$smarty.const.LINKTYP_HERSTELLER])}
-                {$manufacturerOverview=$oSpezialseiten_arr[$smarty.const.LINKTYP_HERSTELLER]}
-            {/if}
-            {block name='snippets-categories-mega-manufacturers-inner'}
-                <li class="nav-item nav-scrollbar-item dropdown dropdown-full {if $nSeitenTyp === $smarty.const.PAGE_HERSTELLER}active{/if}">
-                    {link href="{if $manufacturerOverview !== null}{$manufacturerOverview->getURL()}{else}#{/if}" title={lang key='manufacturers'} class="nav-link dropdown-toggle" target="_self"}
-                        <span class="text-truncate nav-mobile-heading">
-                            {if $manufacturerOverview !== null && !empty($manufacturerOverview->getName())}
-                                {$manufacturerOverview->getName()}
-                            {else}
-                                {lang key='manufacturers'}
-                            {/if}
-                        </span>
-                    {/link}
-                    <div class="dropdown-menu" data-bs-popper="static">
-                        <div class="dropdown-body">
-                            {container}
-                                {row class="lg-row-lg nav"}
-                                    {if $manufacturerOverview !== null}
-                                        {col lg=4 xl=3 class="nav-item-lg-m nav-item d-lg-none"}
-                                            {block name='snippets-categories-mega-manufacturers-header'}
-                                                {link href="{$manufacturerOverview->getURL()}"}
-                                                    <strong class="nav-mobile-heading">
-                                                        {if !empty($manufacturerOverview->getName())}
-                                                            {$manufacturerTitle = $manufacturerOverview->getName()}
-                                                        {else}
-                                                            {$manufacturerTitle = {lang key='manufacturers'}}
-                                                        {/if}
-                                                        {lang key='menuShow' printf=$manufacturerTitle}
-                                                    </strong>
-                                                {/link}
-                                            {/block}
-                                        {/col}
-                                    {/if}
-                                    {foreach $manufacturers as $mft}
-                                        {col lg=4 xl=3 class='nav-item-lg-m nav-item'}
-                                            {block name='snippets-categories-mega-manufacturers-link'}
-                                                {link href=$mft->getURL() title=$mft->getName()|escape:'html' class='submenu-headline submenu-headline-toplevel nav-link '}
-                                                    {if $Einstellungen.template.megamenu.show_manufacturer_images !== 'N'
-                                                        && (!$isMobile || $isTablet)}
-                                                        {include file='snippets/image.tpl'
-                                                            class='submenu-headline-image'
-                                                            item=$mft
-                                                            square=false
-                                                            srcSize='sm'}
-                                                    {/if}
-                                                    {$mft->getName()}
-                                                {/link}
-                                            {/block}
-                                        {/col}
-                                    {/foreach}
-                                {/row}
-                            {/container}
-                        </div>
-                    </div>
-                </li>
-            {/block}
+            <div class="mega-dropdown-column pt-3 pt-sm-4 px-2 px-lg-3">
+                <div class="widget widget-links">
+                    <h6 class="fs-base mb-3">
+                        <i class="ci-store me-2"></i>
+                        {lang key='manufacturers'}
+                    </h6>
+                    <ul class="widget-list">
+                        {foreach $manufacturers as $manufacturer}
+                            <li class="widget-list-item">
+                                {link href=$manufacturer->getURL()
+                                    title=$manufacturer->getName()|escape:'html'
+                                    class="widget-list-link"
+                                    data=["manufacturer-id"=>$manufacturer->getID()]}
+                                    {$manufacturer->getName()}
+                                {/link}
+                            </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
         {/if}
     {/if}
-    {/block} {* /megamenu-manufacturers*}
+    {/block}
+
     {if $Einstellungen.template.megamenu.show_pages !== 'N'}
         {block name='snippets-categories-mega-include-linkgroup-list'}
             {include file='snippets/linkgroup_list.tpl' linkgroupIdentifier='megamenu' dropdownSupport=true tplscope='megamenu'}
         {/block}
-    {/if} {* /megamenu-pages*}
+    {/if}
 
     {if $isMobile}
         {block name='snippets-categories-mega-top-links-hr'}
@@ -242,6 +173,5 @@
             {/block}
         {/block}
     {/if}
-
     {/strip}
 {/block}

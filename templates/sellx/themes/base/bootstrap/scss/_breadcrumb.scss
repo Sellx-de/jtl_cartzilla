@@ -1,45 +1,42 @@
-// Override Bootstrap's breadcrumb component
-
 .breadcrumb {
-  --#{$prefix}breadcrumb-font-weight: #{$breadcrumb-font-weight};
-  --#{$prefix}breadcrumb-color: #{$breadcrumb-color};
-  --#{$prefix}breadcrumb-hover-color: #{$breadcrumb-hover-color};
-
-  flex-direction: row;
-  gap: 0;
-  font-weight: var(--#{$prefix}breadcrumb-font-weight);
+  display: flex;
+  flex-wrap: wrap;
+  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+  margin-bottom: $breadcrumb-margin-bottom;
+  @include font-size($breadcrumb-font-size);
+  list-style: none;
+  background-color: $breadcrumb-bg;
+  @include border-radius($breadcrumb-border-radius);
 }
 
 .breadcrumb-item {
-  > a {
-    color: var(--#{$prefix}breadcrumb-color);
+  // The separator between breadcrumbs (by default, a forward-slash: "/")
+  + .breadcrumb-item {
+    padding-left: $breadcrumb-item-padding;
+
+    &::before {
+      float: left; // Suppress inline spacings and underlining of the separator
+      padding-right: $breadcrumb-item-padding;
+      color: $breadcrumb-divider-color;
+      content: escape-svg($breadcrumb-divider);
+    }
+  }
+
+  // IE9-11 hack to properly handle hyperlink underlines for breadcrumbs built
+  // without `<ul>`s. The `::before` pseudo-element generates an element
+  // *within* the .breadcrumb-item and thereby inherits the `text-decoration`.
+  //
+  // To trick IE into suppressing the underline, we give the pseudo-element an
+  // underline and then immediately remove it.
+  + .breadcrumb-item:hover::before {
+    text-decoration: underline;
+  }
+  // stylelint-disable-next-line no-duplicate-selectors
+  + .breadcrumb-item:hover::before {
     text-decoration: none;
-    transition: $breadcrumb-transition;
-
-    &:hover,
-    &:focus-visible {
-      color: var(--#{$prefix}breadcrumb-hover-color);
-    }
   }
 
-  + .breadcrumb-item::before {
-    width: 1.125em;
-    height: 1.125em;
-    padding-right: 0;
-    margin-right: var(--#{$prefix}breadcrumb-item-padding-x);
-    line-height: 2em;
-  }
-}
-
-
-// Dark mode
-
-@if $enable-dark-mode {
-  @include color-mode(dark) {
-    .breadcrumb:not([data-bs-theme="light"]) {
-      .breadcrumb-item + .breadcrumb-item::before {
-        content: var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-dark)) #{"/* rtl:"} var(--#{$prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped-dark)) #{"*/"};
-      }
-    }
+  &.active {
+    color: $breadcrumb-active-color;
   }
 }

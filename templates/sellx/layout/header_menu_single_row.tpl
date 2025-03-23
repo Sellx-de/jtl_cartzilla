@@ -4,73 +4,38 @@
         {$headerWidth=$Einstellungen.template.header.header_full_width}
     {/block}
     {block name='layout-header-menu-single-row-main'}
-    {if ! $isMobile}
-        {block name='layout-header-menu-single-row-top-bar-outer'}
-            {if $menuScroll && $Einstellungen.template.header.menu_show_topbar === 'Y'}
-                <div id="header-top-bar" class="alert alert-dismissible bg-dark text-white rounded-0 py-2 px-0 m-0 fade show" style="height:40px">
-                    <div class="container position-relative d-flex min-w-0">
-                        <div class="row d-flex flex-nowrap align-items-center g-2 w-100 min-w-0 mx-auto" style="max-width: 616px">
-                        <div class="fs-sm text-white" style="margin-top: 5px;">
-                            {block name='layout-header-menu-single-row-top-bar-outer-include-header-top-bar'}
-                                {include file='layout/header_top_bar.tpl'}
-                            {/block}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {/if}
-        {/block}
-    {/if}
         {block name='layout-header-menu-single-row-nav'}
             {block name='layout-header-menu-single-row-nav-main'}
-                <div class="hide-navbar container menu-search-position-{$Einstellungen.template.header.menu_search_position}">
-                    {navbar toggleable=true fill=true type="expand-lg" class="row justify-content-center align-items-center-util"}
+                <div class="container py-2 py-lg-3">
                     {block name='layout-header-top-bar-user-settings-include-language-dropdown'}
-                    {include file='snippets/language_dropdown.tpl'}
-                {/block}
+                    <div class="d-flex align-items-center gap-3">
+                        {include file='snippets/language_dropdown.tpl'}
+                        </div>
+                    {/block}
                         {block name='layout-header-menu-single-row-logo'}
-                            {col class="col-lg-4 nav-logo-wrapper order-lg-2" style="padding-left: 4rem;"}
                                 {block name='layout-header-menu-single-row-logo-include-header-logo'}
                                     {include file='layout/header_logo.tpl'}
                                 {/block}
-                            {/col}
                         {/block}
                         {block name='layout-header-menu-single-row-nav-main-inner'}
-                            {if $nSeitenTyp === $smarty.const.PAGE_BESTELLVORGANG}
-                                {block name='layout-header-menu-single-row-secure-checkout'}
-                                    {block name='layout-header-menu-single-row-secure-checkout-title'}
-                                        {col class="secure-checkout-icon order-3"}
-                                            <i class="fas fa-lock icon-mr-2"></i>{lang key='secureCheckout' section='checkout'}
-                                        {/col}
-                                    {/block}
-                                    {block name='layout-header-menu-single-row-top-bar-inner'}
-                                        {col class="secure-checkout-topbar col-auto ml-auto-util d-none d-lg-block order-4"}
-                                            {include file='layout/header_top_bar.tpl'}
-                                        {/col}
-                                    {/block}
-                                {/block}
-                            {else}
-                                
                                 {block name='layout-header-menu-single-row-icons'}
-                                    {col class="col-lg-4 nav-icons-wrapper order-lg-3" style="float:right"}
+                                    <div class="d-flex align-items-center gap-3">
                                         {include file='layout/header_nav_icons.tpl'}
-                                    {/col}
+                                    </div>
                                 {/block}
-                            {/if}
                         {/block}
-                    {/navbar}
                 </div>
             {/block}
             {block name='layout-header-menu-single-row-nav-categories'}
                 {if $nSeitenTyp !== $smarty.const.PAGE_BESTELLVORGANG}
-                    <div class="hide-navbar container menu-search-position-right">
-                        {navbar toggleable=true fill=true type="expand-lg" class="justify-content-start {if $nSeitenTyp === $smarty.const.PAGE_BESTELLVORGANG}align-items-center-util{else}align-items-lg-end{/if}"}
+                    <div class="offcanvas-body pt-1 pb-3 py-lg-0">
+        <div class="container pb-lg-2 px-0 px-lg-3">
                             {block name='layout-header-menu-single-row-include-categories-mega'}
                                 {include file='layout/header_categories.tpl'
                                     menuMultipleRows=($Einstellungen.template.header.menu_multiple_rows === 'multiple')
                                     menuScroll=$menuScroll}
                             {/block}
-                        {/navbar}
+                        </div>
                     </div>
                 {/if}
             {/block}

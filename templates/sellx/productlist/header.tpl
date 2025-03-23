@@ -3,7 +3,7 @@
         || (!$oNavigationsinfo->getManufacturer() && !$oNavigationsinfo->getCharacteristicValue() && !$oNavigationsinfo->getCategory())}
         {opcMountPoint id='opc_before_heading'}
         {block name='productlist-header-heading'}
-            <div class="h1">{$Suchergebnisse->getSearchTermWrite()}</div>
+            <h1 class="h3 container pb-3 pb-lg-4">{$Suchergebnisse->getSearchTermWrite()}</div>
         {/block}
     {/if}
 
@@ -59,14 +59,6 @@
                 lazy=false
                 sizes="{if !$bExclusive && $boxes.left !== null && !empty(trim(strip_tags($boxes.left))) && (($Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive) || $smarty.const.PAGE_ARTIKELLISTE === $nSeitenTyp)}(min-width: 992px) 67vw, (min-width: 1300px) 75vw, 100vw{/if} "
                 alt="{if $oNavigationsinfo->getCategory() !== null && !empty($navData->getImageAlt())}{$navData->getImageAlt()}{else}{$navData->getDescription()|default:''|strip_tags|truncate:50}{/if}"}
-        {/if}
-        {if $oNavigationsinfo->getName() && $showTitle}
-            <div class="title">
-                {opcMountPoint id='opc_before_heading'}
-                {block name='productlist-header-description-heading'}
-                    <h1 class="h2">{$oNavigationsinfo->getName()}</h1>
-                {/block}
-            </div>
         {/if}
 
         {if $Einstellungen.navigationsfilter.kategorie_beschreibung_anzeigen === 'Y'

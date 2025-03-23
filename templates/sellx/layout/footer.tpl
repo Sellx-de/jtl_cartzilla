@@ -69,20 +69,29 @@
                                             {form class="needs-validation" method="post" action="{get_static_route id='newsletter.php'}"}
                                                 {block name='layout-footer-form-content'}
                                                     {input type="hidden" name="abonnieren" value="2"}
-                                                        <div class="position-relative mt-3">
-                                                             <input type="email" class="form-control form-control-lg bg-image-none text-start" name="cEmail" id="newsletter_email" placeholder="{lang key='emailadress'}" required>
-                                                                 <div class="invalid-tooltip bg-transparent p-0">Please enter your email address!</div>
-                <button type="submit" class="btn btn-icon btn-ghost fs-xl border-0 position-absolute top-0 end-0 mt-1 me-1" aria-label="Submit your email address">
-                  <i class="ci-arrow-up-right"></i>
-                </button>
+                                                    <div class="position-relative">
+                                                        <div class="input-group">
+                                                            <input type="email" 
+                                                                   class="form-control form-control-lg bg-transparent" 
+                                                                   name="cEmail" 
+                                                                   id="newsletter_email" 
+                                                                   placeholder="{lang key='emailadress'}" 
+                                                                   required>
+                                                            <button type="submit" 
+                                                                    class="btn btn-dark btn-lg" 
+                                                                    aria-label="{lang key='newsletterSendSubscribe' section='newsletter'}">
+                                                                <i class="ci-send"></i>
+                                                            </button>
                                                         </div>
-                                                        {if isset($oSpezialseiten_arr[$smarty.const.LINKTYP_DATENSCHUTZ])}
-                                                            {block name='layout-footer-newsletter-info'}
-                                                                <p class="info">
-                                                                    {lang key='newsletterInformedConsent' section='newsletter' printf=$oSpezialseiten_arr[$smarty.const.LINKTYP_DATENSCHUTZ]->getURL()}
-                                                                </p>
-                                                            {/block}
-                                                        {/if}
+                                                        <div class="invalid-tooltip">Bitte geben Sie eine gültige E-Mail-Adresse ein!</div>
+                                                    </div>
+                                                    {if isset($oSpezialseiten_arr[$smarty.const.LINKTYP_DATENSCHUTZ])}
+                                                        {block name='layout-footer-newsletter-info'}
+                                                            <p class="form-text mt-3">
+                                                                {lang key='newsletterInformedConsent' section='newsletter' printf=$oSpezialseiten_arr[$smarty.const.LINKTYP_DATENSCHUTZ]->getURL()}
+                                                            </p>
+                                                        {/block}
+                                                    {/if}
                                                 {/block}
                                                 {block name='layout-footer-form-captcha'}
                                                     <div class="{if !empty($plausiArr.captcha) && $plausiArr.captcha === true} has-error{/if}">
@@ -171,45 +180,52 @@
                 {block name='layout-footer-copyright'}
                     
                     <div class="d-lg-flex align-items-center border-top pt-4 mt-3">
-                        <div class="d-flex gap-2 gap-sm-3 justify-content-center ms-lg-auto mb-3 mb-md-4 mb-lg-0 order-lg-2">
-                        <div>
-                            <img src="templates/sellx/themes/base/images/payment-methods/visa-light-mode.svg" class="d-none-dark" alt="Visa">
-                            <img src="templates/sellx/themes/base/images/payment-methods/visa-dark-mode.svg" class="d-none d-block-dark" alt="Visa">
+                        <div class="d-flex gap-2 gap-sm-3 justify-content-center ms-lg-auto mb-3 mb-lg-0 order-lg-2">
+                            <div>
+                                <img src="templates/sellx/themes/base/images/payment-methods/visa-light-mode.svg" class="d-none-dark" alt="Visa">
+                                <img src="templates/sellx/themes/base/images/payment-methods/visa-dark-mode.svg" class="d-none d-block-dark" alt="Visa">
+                            </div>
+                            <div>
+                                <img src="templates/sellx/themes/base/images/payment-methods/paypal-light-mode.svg" class="d-none-dark" alt="PayPal">
+                                <img src="templates/sellx/themes/base/images/payment-methods/paypal-dark-mode.svg" class="d-none d-block-dark" alt="PayPal">
+                            </div>
+                            <div>
+                                <img src="templates/sellx/themes/base/images/payment-methods/mastercard.svg" alt="Mastercard">
+                            </div>
+                            <div>
+                                <img src="templates/sellx/themes/base/images/payment-methods/google-pay-light-mode.svg" class="d-none-dark" alt="Google Pay">
+                                <img src="templates/sellx/themes/base/images/payment-methods/google-pay-dark-mode.svg" class="d-none d-block-dark" alt="Google Pay">
+                            </div>
+                            <div>
+                                <img src="templates/sellx/themes/base/images/payment-methods/apple-pay-light-mode.svg" class="d-none-dark" alt="Apple Pay">
+                                <img src="templates/sellx/themes/base/images/payment-methods/apple-pay-dark-mode.svg" class="d-none d-block-dark" alt="Apple Pay">
+                            </div>
                         </div>
-                        <div>
-                            <img src="templates/sellx/themes/base/images/payment-methods/paypal-light-mode.svg" class="d-none-dark" alt="PayPal">
-                            <img src="templates/sellx/themes/base/images/payment-methods/paypal-dark-mode.svg" class="d-none d-block-dark" alt="PayPal">
-                        </div>
-                        <div>
-                            <img src="templates/sellx/themes/base/images/payment-methods/mastercard.svg" alt="Mastercard">
-                        </div>
-                        <div>
-                            <img src="templates/sellx/themes/base/images/payment-methods/google-pay-light-mode.svg" class="d-none-dark" alt="Google Pay">
-                            <img src="templates/sellx/themes/base/images/payment-methods/google-pay-dark-mode.svg" class="d-none d-block-dark" alt="Google Pay">
-                        </div>
-                        <div>
-                            <img src="templates/sellx/themes/base/images/payment-methods/apple-pay-light-mode.svg" class="d-none-dark" alt="Apple Pay">
-                            <img src="templates/sellx/themes/base/images/payment-methods/apple-pay-dark-mode.svg" class="d-none d-block-dark" alt="Apple Pay">
-                        </div>
-                    </div>
-                    <div class="d-md-flex justify-content-center order-lg-1">
-                        <ul class="nav justify-content-center gap-4 order-md-3 mb-4 mb-md-0">
-                            <li class="animate-underline">
-                                <a class="nav-link fs-xs fw-normal p-0 animate-target" href="Sitemap">Sitemap</a>
-                            </li>
-                            <li class="animate-underline">
-                                <a class="nav-link fs-xs fw-normal p-0 animate-target" href="Login">Anmelden</a>
-                            </li>
-                            <li class="animate-underline">
-                                <a class="nav-link fs-xs fw-normal p-0 animate-target" href="passwort-vergessen">Passwort Vergessen</a>
-                            </li>
-                        </ul>
+                        <div class="d-md-flex justify-content-center order-lg-1">
+                            <ul class="nav justify-content-center gap-4 order-md-3 mb-4 mb-md-0" style="flex-direction: row;!important" >
+                                <li class="animate-underline">
+                                    <a class="nav-link fs-xs fw-normal p-0 animate-target" href="Sitemap">Sitemap</a>
+                                </li>
+                                <li class="animate-underline">
+                                    <a class="nav-link fs-xs fw-normal p-0 animate-target" href="Login">Anmelden</a>
+                                </li>
+                                <li class="animate-underline">
+                                    <a class="nav-link fs-xs fw-normal p-0 animate-target" href="passwort-vergessen">Passwort Vergessen</a>
+                                </li>
+                            </ul>
                             <div class="vr text-body-secondary opacity-25 mx-4 d-none d-md-inline-block order-md-2"></div>
-                        <p class="fs-xs text-center text-lg-start mb-0 order-md-1">
-                            © All rights reserved. Made with <i class="fa fa-heart fa-4x fa-beat" style="color: #"></i> by <span class="animate-underline"><a class="animate-target text-dark-emphasis text-decoration-none" href="https://sellx.de/" target="_blank" rel="noreferrer">sellx</a></span>
-                        </p>
-                    
-
+                            <p class="fs-xs text-center text-lg-start mb-0 order-md-1">
+                                © All rights reserved. Made with <i class="fa fa-heart fa-beat" style="color: #"></i> by 
+                                <a class="text-dark-emphasis text-decoration-none d-inline-flex align-items-center" 
+                                   href="https://sellx.de" 
+                                   target="_blank" 
+                                   rel="noreferrer">
+                                    <img src="templates/sellx/themes/base/images/logo/sellx_footer.svg" 
+                                         alt="Made by sellx GmbH" 
+                                         class="ms-1" 
+                                         style="height: 0.875em; width: auto; vertical-align: baseline;">
+                                </a>
+                            </p>
                         </div>
                     </div>
                 {/block}

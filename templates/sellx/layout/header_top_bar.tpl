@@ -1,7 +1,7 @@
 {block name='layout-header-top-bar'}
     {strip}
         <div id="customCarousel">
-            <div class="carousel-inner text-truncate text-center">
+            <div class="carousel-inner text-truncate text-center" style="height: 20px;">
                 {* Sprach- & Währungsumschaltung *}
                 {block name='layout-header-top-bar-user-settings'}
                     {block name='layout-header-top-bar-user-settings-currency'}
@@ -20,7 +20,7 @@
                     {foreach $topbarTexts as $topbar}
                         {if !empty($topbar)}
                             <div class="carousel-item text-center {if $index === 0}active{/if}">
-                                <p class="m-0 px-3">{$topbar}</p>
+                                <p class="m-0 px-3" style="padding-right:6rem">{$topbar}</p>
                             </div>
                             {assign var="index" value=$index+1}
                         {/if}

@@ -2397,7 +2397,6 @@ pre code {
 }
 
 header {
-    box-shadow: 0 1rem 0.5625rem -0.75rem rgba(0, 0, 0, 0.06);
     position: relative;
     z-index: 1020
 }
@@ -3215,10 +3214,6 @@ html {
     }
 }
 
-.breadcrumb-item.active {
-    font-weight: 700
-}
-
 .breadcrumb-item.first {
     padding-left: 0
 }
@@ -3240,7 +3235,6 @@ html {
 
 .breadcrumb-item.active {
     color: #525252;
-    font-weight: 700
 }
 
 .breadcrumb-item.first::before {
@@ -3396,7 +3390,6 @@ header {
 }
 
 header {
-    box-shadow: 0 1rem 0.5625rem -0.75rem rgba(0, 0, 0, 0.06);
     position: relative;
     z-index: 1020
 }
@@ -3776,20 +3769,6 @@ hr {
 
 #content-wrapper {
     margin-top: 0
-}
-
-#content-wrapper.has-fluid {
-    padding-top: 1rem
-}
-
-#content-wrapper:not(.has-fluid) {
-    padding-top: 2rem
-}
-
-@media (min-width:992px) {
-    #content-wrapper:not(.has-fluid) {
-        padding-top: 4rem
-    }
 }
 
 aside h4 {

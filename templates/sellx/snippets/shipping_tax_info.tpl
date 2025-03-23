@@ -70,7 +70,5 @@
             {/block}
         {/if}
     {/block}
-
-    {* Block content removed in 5.4.0 *}
     {block name='snippets-shipping-tax-info-shipping-class'}{/block}
 {/block}

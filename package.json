@@ -4,7 +4,10 @@
     "description": "|**JTL-Shop** is an open source shop software designed for use with JTL-Wawi. | |:-----------------:|",
     "main": "webpack.config.js",
     "scripts": {
-        "sass": "sass ./templates/sellx/themes/base/bootstrap/scss/bootstrap.scss:./templates/sellx/themes/base/bootstrap/css/bootstrap.css"
+        "sass": "sass --load-path=node_modules ./templates/sellx/themes/base/bootstrap/scss/bootstrap.scss:./templates/sellx/themes/base/bootstrap/css/bootstrap.css",
+        "sass:shop": "sass --load-path=node_modules ./templates/sellx/themes/base/scss/shop.scss:./templates/sellx/themes/base/css/shop.css --watch",
+        "sass:all": "npm run sass && npm run sass:shop",
+        "sass:watch": "npm run sass:all -- --watch"
     },
     "keywords": [],
     "author": "",
@@ -18,5 +21,8 @@
         "sass-loader": "^13.2.0",
         "postcss-loader": "^7.0.2",
         "autoprefixer": "^10.4.14"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.3"
     }
 }

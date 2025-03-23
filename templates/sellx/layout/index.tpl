@@ -16,12 +16,12 @@
             {block name='layout-index-heading'}
                 {if !empty($Link->getTitle())}
                     {opcMountPoint id='opc_before_heading' inContainer=false}
-                    {container fluid=$Link->getIsFluid() class="index-heading-wrapper {if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
+                    {container fluid="{$Link->getIsFluid()}" class="index-heading-wrapper {if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
                         <h1>{$Link->getTitle()}</h1>
                     {/container}
                 {elseif isset($bAjaxRequest) && $bAjaxRequest}
                     {opcMountPoint id='opc_before_heading' inContainer=false}
-                    {container fluid=$Link->getIsFluid() class="index-heading-wrapper {if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
+                    {container fluid="{$Link->getIsFluid()}" class="index-heading-wrapper {if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
                         <h1>{if !empty($Link->getMetaTitle())}{$Link->getMetaTitle()}{else}{$Link->getName()}{/if}</h1>
                     {/container}
                 {/if}

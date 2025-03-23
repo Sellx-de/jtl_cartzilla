@@ -61,8 +61,8 @@
                             </li>
                         {else}
                             {block name='snippets-linkgroup-recursive-has-not-items'}
-                                {navitem class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0 {if $active || $li->getID() === $activeId} active{/if}" href=$li->getURL() target=$li->getTarget()}
-                                    {$li->getName()}
+                                {navitem class="nav-link d-inline-block p-0 {if $active || $li->getID() === $activeId} active{/if}" href=$li->getURL() target=$li->getTarget()}
+                                    <span class="animate-underline animate-target fw-normal">{$li->getName()}</span>
                                 {/navitem}
                             {/block}
                         {/if}

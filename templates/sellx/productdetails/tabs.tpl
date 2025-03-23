@@ -77,114 +77,182 @@
             {if $tabanzeige && !$isMobile}
                 {block name='productdetails-tabs-tabs'}
                     {container class="{if $Einstellungen.template.theme.left_sidebar === 'Y' && $boxesLeftActive}container-plus-sidebar{/if}"}
-                        <nav class="tab-navigation">
-                        {tabs id="product-tabs"|cat:$quickViewIdPostfix}
-                        {if $useDescription}
-                            {block name='productdetails-tabs-tab-description'}
-                                {tab title="{lang key='description' section='productDetails'}" active=$setActiveClass.description id="description"|cat:$quickViewIdPostfix}
-                                    {block name='productdetails-tabs-tab-content'}
-                                        {block name='tab-description-media-types'}
-                                            {opcMountPoint id='opc_before_desc'}
-                                            <div class="desc">
-                                                <p>{$Artikel->cBeschreibung}</p>
-                                                {if $useDescriptionWithMediaGroup}
-                                                    {foreach $Artikel->getMediaTypes() as $mediaType}
-                                                        <div class="h3">{$mediaType->name}</div>
-                                                        <div class="media">
-                                                            {include file='productdetails/mediafile.tpl'}
-                                                        </div>
-                                                    {/foreach}
-                                                {/if}
+                        <section class="container pt-4">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-underline flex-nowrap border-bottom" role="tablist">
+                                {if $useDescription}
+                                    <li class="nav-item me-md-1" role="presentation">
+                                        <button type="button" class="nav-link{if $setActiveClass.description} active{/if}" id="description-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#description-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="description-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.description}true{else}false{/if}">
+                                            {lang key='description' section='productDetails'}
+                                        </button>
+                                    </li>
+                                {/if}
+
+                                {if $useDownloads}
+                                    <li class="nav-item me-md-1" role="presentation">
+                                        <button type="button" class="nav-link{if $setActiveClass.downloads} active{/if}" id="downloads-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#downloads-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="downloads-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.downloads}true{else}false{/if}">
+                                            {lang section='productDownloads' key='downloadSection'}
+                                        </button>
+                                    </li>
+                                {/if}
+
+                                {if !empty($separatedTabs)}
+                                    {foreach $separatedTabs as $separatedTab}
+                                        <li class="nav-item me-md-1" role="presentation">
+                                            <button type="button" class="nav-link{if $setActiveClass.separatedTabs && $separatedTab@first} active{/if}" id="{$separatedTab.name|seofy}-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#{$separatedTab.name|seofy}-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="{$separatedTab.name|seofy}-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.separatedTabs && $separatedTab@first}true{else}false{/if}">
+                                                {$separatedTab.name}
+                                            </button>
+                                        </li>
+                                    {/foreach}
+                                {/if}
+
+                                {if $useVotes}
+                                    <li class="nav-item me-md-1" role="presentation">
+                                        <button type="button" class="nav-link{if $setActiveClass.votes} active{/if}" id="votes-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#votes-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="votes-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.votes}true{else}false{/if}">
+                                            {lang key='Votes'}
+                                            {if isset($Artikel->Bewertungen) && $Artikel->Bewertungen->oBewertungGesamt->nAnzahl > 0}
+                                                <span class="d-none d-md-inline">&nbsp;({$Artikel->Bewertungen->oBewertungGesamt->nAnzahl})</span>
+                                            {/if}
+                                        </button>
+                                    </li>
+                                {/if}
+
+                                {if $useQuestionOnItem && empty($smarty.get.quickView)}
+                                    <li class="nav-item me-md-1" role="presentation">
+                                        <button type="button" class="nav-link{if $setActiveClass.questionOnItem} active{/if}" id="questionOnItem-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#questionOnItem-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="questionOnItem-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.questionOnItem}true{else}false{/if}">
+                                            {lang key='productQuestion' section='productDetails'}
+                                        </button>
+                                    </li>
+                                {/if}
+
+                                {if $usePriceFlow}
+                                    <li class="nav-item me-md-1" role="presentation">
+                                        <button type="button" class="nav-link{if $setActiveClass.priceFlow} active{/if}" id="priceFlow-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#priceFlow-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="priceFlow-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.priceFlow}true{else}false{/if}">
+                                            {lang key='priceFlow' section='productDetails'}
+                                        </button>
+                                    </li>
+                                {/if}
+
+                                {if $useAvailabilityNotification && empty($smarty.get.quickView)}
+                                    <li class="nav-item me-md-1" role="presentation">
+                                        <button type="button" class="nav-link{if $setActiveClass.availabilityNotification} active{/if}" id="availabilityNotification-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#availabilityNotification-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="availabilityNotification-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.availabilityNotification}true{else}false{/if}">
+                                            {lang key='notifyMeWhenProductAvailableAgain'}
+                                        </button>
+                                    </li>
+                                {/if}
+
+                                {if $useMediaGroup}
+                                    {foreach $Artikel->getMediaTypes() as $mediaType}
+                                        {$cMedienTypId = $mediaType->name|seofy}
+                                        <li class="nav-item me-md-1" role="presentation">
+                                            <button type="button" class="nav-link{if $setActiveClass.mediaGroup && $mediaType@first} active{/if}" id="{$cMedienTypId}-tab{$quickViewIdPostfix}" data-bs-toggle="tab" data-bs-target="#{$cMedienTypId}-tab-pane{$quickViewIdPostfix}" role="tab" aria-controls="{$cMedienTypId}-tab-pane{$quickViewIdPostfix}" aria-selected="{if $setActiveClass.mediaGroup && $mediaType@first}true{else}false{/if}">
+                                                {$mediaType->name} ({$mediaType->count})
+                                            </button>
+                                        </li>
+                                    {/foreach}
+                                {/if}
+                            </ul>
+
+                            <div class="tab-content pt-4 mt-md-3">
+                                {if $useDescription}
+                                    <!-- Description tab -->
+                                    <div class="tab-pane fade{if $setActiveClass.description} show active{/if}" id="description-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="description-tab{$quickViewIdPostfix}">
+                                        <div class="row">
+                                            <div class="col-lg-8 fs-sm">
+                                                {block name='tab-description-media-types'}
+                                                    {opcMountPoint id='opc_before_desc'}
+                                                    <div class="desc">
+                                                        <p>{$Artikel->cBeschreibung}</p>
+                                                        {if $useDescriptionWithMediaGroup}
+                                                            {foreach $Artikel->getMediaTypes() as $mediaType}
+                                                                <div class="h3">{$mediaType->name}</div>
+                                                                <div class="media">
+                                                                    {include file='productdetails/mediafile.tpl'}
+                                                                </div>
+                                                            {/foreach}
+                                                        {/if}
+                                                    </div>
+                                                    {opcMountPoint id='opc_after_desc'}
+                                                {/block}
                                             </div>
-                                            {opcMountPoint id='opc_after_desc'}
-                                        {/block}
-                                        {block name='productdetails-tabs-tab-description-include-attributes'}
-                                            {include file='productdetails/attributes.tpl' tplscope='details'
-                                            showProductWeight=$showProductWeight showShippingWeight=$showShippingWeight
-                                            dimension=$dimension showAttributesTable=$showAttributesTable}
-                                        {/block}
-                                    {/block}
-                                {/tab}
-                            {/block}
-                        {/if}
+                                            <div class="col-lg-4">
+                                                {block name='productdetails-tabs-tab-description-include-attributes'}
+                                                    {include file='productdetails/attributes.tpl' tplscope='details'
+                                                    showProductWeight=$showProductWeight showShippingWeight=$showShippingWeight
+                                                    dimension=$dimension showAttributesTable=$showAttributesTable}
+                                                {/block}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {/if}
 
-                        {if $useDownloads}
-                            {block name='productdetails-tabs-tab-downloads'}
-                                {tab title="{lang section='productDownloads' key='downloadSection'}" active=$setActiveClass.downloads id="downloads"|cat:$quickViewIdPostfix}
-                                    {opcMountPoint id='opc_before_download'}
-                                    {include file='productdetails/download.tpl'}
-                                    {opcMountPoint id='opc_after_download'}
-                                {/tab}
-                            {/block}
-                        {/if}
+                                {if $useDownloads}
+                                    <!-- Downloads tab -->
+                                    <div class="tab-pane fade{if $setActiveClass.downloads} show active{/if}" id="downloads-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="downloads-tab{$quickViewIdPostfix}">
+                                        {opcMountPoint id='opc_before_download'}
+                                        {include file='productdetails/download.tpl'}
+                                        {opcMountPoint id='opc_after_download'}
+                                    </div>
+                                {/if}
 
-                        {if !empty($separatedTabs)}
-                            {block name='productdetails-tabs-tab-separated-tabs'}
-                                {foreach $separatedTabs as $separatedTab}
-                                    {tab title=$separatedTab.name active=$setActiveClass.separatedTabs && $separatedTab@first id=$separatedTab.name|seofy|cat:$quickViewIdPostfix}
-                                        {opcMountPoint id='opc_before_separated_'|cat:$separatedTab.id}
-                                        {$separatedTab.content}
-                                        {opcMountPoint id='opc_after_separated_'|cat:$separatedTab.id}
-                                    {/tab}
-                                {/foreach}
-                            {/block}
-                        {/if}
+                                {if !empty($separatedTabs)}
+                                    {foreach $separatedTabs as $separatedTab}
+                                        <!-- {$separatedTab.name} tab -->
+                                        <div class="tab-pane fade{if $setActiveClass.separatedTabs && $separatedTab@first} show active{/if}" id="{$separatedTab.name|seofy}-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="{$separatedTab.name|seofy}-tab{$quickViewIdPostfix}">
+                                            {opcMountPoint id='opc_before_separated_'|cat:$separatedTab.id}
+                                            {$separatedTab.content}
+                                            {opcMountPoint id='opc_after_separated_'|cat:$separatedTab.id}
+                                        </div>
+                                    {/foreach}
+                                {/if}
 
-                        {if $useVotes}
-                            {block name='productdetails-tabs-tab-votes'}
-                                {tab title="{lang key='Votes'}" active=$setActiveClass.votes
-                                        id="votes"|cat:$quickViewIdPostfix}
-                                    {opcMountPoint id='opc_before_tab_votes'}
-                                    {include file='productdetails/reviews.tpl' stars=$Artikel->Bewertungen->oBewertungGesamt->fDurchschnitt}
-                                    {opcMountPoint id='opc_after_tab_votes'}
-                                {/tab}
-                            {/block}
-                        {/if}
+                                {if $useVotes}
+                                    <!-- Reviews tab -->
+                                    <div class="tab-pane fade{if $setActiveClass.votes} show active{/if}" id="votes-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="votes-tab{$quickViewIdPostfix}">
+                                        {opcMountPoint id='opc_before_tab_votes'}
+                                        {include file='productdetails/reviews.tpl' stars=$Artikel->Bewertungen->oBewertungGesamt->fDurchschnitt}
+                                        {opcMountPoint id='opc_after_tab_votes'}
+                                    </div>
+                                {/if}
 
-                        {if $useQuestionOnItem && empty($smarty.get.quickView)}
-                            {block name='productdetails-tabs-tab-question-on-item'}
-                                {tab title="{lang key='productQuestion' section='productDetails'}" active=$setActiveClass.questionOnItem id="questionOnItem"|cat:$quickViewIdPostfix}
-                                    {opcMountPoint id='opc_before_tab_question'}
-                                    {include file='productdetails/question_on_item.tpl' position="tab"}
-                                    {opcMountPoint id='opc_after_tab_question'}
-                                {/tab}
-                            {/block}
-                        {/if}
+                                {if $useQuestionOnItem && empty($smarty.get.quickView)}
+                                    <!-- Question tab -->
+                                    <div class="tab-pane fade{if $setActiveClass.questionOnItem} show active{/if}" id="questionOnItem-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="questionOnItem-tab{$quickViewIdPostfix}">
+                                        {opcMountPoint id='opc_before_tab_question'}
+                                        {include file='productdetails/question_on_item.tpl' position="tab"}
+                                        {opcMountPoint id='opc_after_tab_question'}
+                                    </div>
+                                {/if}
 
-                        {if $usePriceFlow}
-                            {block name='productdetails-tabs-tab-price-flow'}
-                                {tab title="{lang key='priceFlow' section='productDetails'}" active=$setActiveClass.priceFlow id="priceFlow"|cat:$quickViewIdPostfix}
-                                    {opcMountPoint id='opc_before_tab_price_history'}
-                                    {include file='productdetails/price_history.tpl'}
-                                    {opcMountPoint id='opc_after_tab_price_history'}
-                                {/tab}
-                            {/block}
-                        {/if}
+                                {if $usePriceFlow}
+                                    <!-- Price flow tab -->
+                                    <div class="tab-pane fade{if $setActiveClass.priceFlow} show active{/if}" id="priceFlow-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="priceFlow-tab{$quickViewIdPostfix}">
+                                        {opcMountPoint id='opc_before_tab_price_history'}
+                                        {include file='productdetails/price_history.tpl'}
+                                        {opcMountPoint id='opc_after_tab_price_history'}
+                                    </div>
+                                {/if}
 
-                        {if $useAvailabilityNotification && empty($smarty.get.quickView)}
-                            {block name='productdetails-tabs-tab-availability-notification'}
-                                {tab title="{lang key='notifyMeWhenProductAvailableAgain'}" active=$setActiveClass.availabilityNotification id="availabilityNotification"|cat:$quickViewIdPostfix}
-                                    {opcMountPoint id='opc_before_tab_availability'}
-                                    {include file='productdetails/availability_notification_form.tpl' position='tab' tplscope='artikeldetails'}
-                                    {opcMountPoint id='opc_after_tab_availability'}
-                                {/tab}
-                            {/block}
-                        {/if}
+                                {if $useAvailabilityNotification && empty($smarty.get.quickView)}
+                                    <!-- Availability notification tab -->
+                                    <div class="tab-pane fade{if $setActiveClass.availabilityNotification} show active{/if}" id="availabilityNotification-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="availabilityNotification-tab{$quickViewIdPostfix}">
+                                        {opcMountPoint id='opc_before_tab_availability'}
+                                        {include file='productdetails/availability_notification_form.tpl' position='tab' tplscope='artikeldetails'}
+                                        {opcMountPoint id='opc_after_tab_availability'}
+                                    </div>
+                                {/if}
 
-                        {if $useMediaGroup}
-                            {block name='productdetails-tabs-tab-mediagroup'}
-                                {foreach $Artikel->getMediaTypes() as $mediaType}
-                                    {$cMedienTypId = $mediaType->name|seofy}
-                                    {tab title="{$mediaType->name} ({$mediaType->count})"
-                                            active=$setActiveClass.mediaGroup
-                                            && $mediaType@first id=$cMedienTypId|cat:$quickViewIdPostfix}
-                                        {include file='productdetails/mediafile.tpl'}
-                                    {/tab}
-                                {/foreach}
-                            {/block}
-                        {/if}
-                        {/tabs}
-                        </nav>
+                                {if $useMediaGroup}
+                                    {foreach $Artikel->getMediaTypes() as $mediaType}
+                                        {$cMedienTypId = $mediaType->name|seofy}
+                                        <!-- Media tab ({$mediaType->name}) -->
+                                        <div class="tab-pane fade{if $setActiveClass.mediaGroup && $mediaType@first} show active{/if}" id="{$cMedienTypId}-tab-pane{$quickViewIdPostfix}" role="tabpanel" aria-labelledby="{$cMedienTypId}-tab{$quickViewIdPostfix}">
+                                            {include file='productdetails/mediafile.tpl'}
+                                        </div>
+                                    {/foreach}
+                                {/if}
+                            </div>
+                        </section>
                     {/container}
                 {/block}
             {else}

@@ -12,8 +12,7 @@
             {/foreach}
         {/capture}
         {navitemdropdown
-        class="col col-lg-4 dropdown d-none d-md-block nav"
-        style="padding-right: 25.4rem;float:left"
+        class="col col-lg-7 dropdown d-none d-md-block nav"
         right=true
         text=$smarty.capture.langSelectorText}
             {foreach $languages as $language}

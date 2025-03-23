@@ -1,119 +1,53 @@
 {block name='productdetails-image'}
-    <div id="image_wrapper" class="gallery-with-action" role="group">
-        {row class="gallery-with-action-main"}
-        {block name='productdetails-image-button'}
-            {col cols=12 class="product-detail-image-topbar"}
-                {button id="image_fullscreen_close" variant="link" aria=["label"=>"close"]}
-                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
-                {/button}
-            {/col}
-        {/block}
-        {block name='productdetails-image-main'}
-            {col cols=12}
-            {if !($Artikel->nIstVater && $Artikel->kVaterArtikel == 0)}
-                {block name='productdetails-image-actions'}
-                    <div class="product-actions" data-toggle="product-actions" data-bs-toggle="product-actions">
-                        {if $Einstellungen.artikeldetails.artikeldetails_vergleichsliste_anzeigen === 'Y'
-                            && $Einstellungen.vergleichsliste.vergleichsliste_anzeigen === 'Y'
-                            && empty($smarty.get.quickView)}
-                            {block name='productdetails-image-include-comparelist-button'}
-                                {include file='snippets/comparelist_button.tpl'}
-                            {/block}
-                        {/if}
-                        {if $Einstellungen.global.global_wunschliste_anzeigen === 'Y'
-                            && empty($smarty.get.quickView)}
-                            {block name='productdetails-image-include-wishlist-button'}
-                                {include file='snippets/wishlist_button.tpl'}
-                            {/block}
-                        {/if}
-                    </div>
-                {/block}
+    <!-- Gallery -->
+    <div class="col-md-6 pb-4 pb-md-0 mb-2 mb-sm-3 mb-md-0">
+        <div class="position-relative">
+            {if $Artikel->Preise->rabatt > 0}
+                <span class="badge text-bg-danger position-absolute top-0 start-0 z-2 mt-3 mt-sm-4 ms-3 ms-sm-4">{lang key='salePercentage' section='productDetails' printf=$Artikel->Preise->rabatt}</span>
             {/if}
-            {block name='productdetails-image-images-wrapper'}
-                <div id="gallery_wrapper" class="clearfix">
-                    <div id="gallery"
-                         class="product-images slick-smooth-loading carousel slick-lazy"
-                         data-slick-type="gallery">
-                        {block name='productdetails-image-images'}
-                            {foreach $Artikel->Bilder as $image}
-                                {strip}
-                                    <div class="square square-image js-gallery-images {if !$image@first}d-none{/if}">
-                                        <div class="inner">
-                                            {image alt=$image->cAltAttribut
-                                                class="product-image"
-                                                fluid=true
-                                                lazy={!$image@first}
-                                                webp=true
-                                                src="{$image->cURLMini}"
-                                                srcset="
-                                                    {$image->cURLMini} {$image->imageSizes->xs->size->width}w,
-                                                    {$image->cURLKlein} {$image->imageSizes->sm->size->width}w,
-                                                    {$image->cURLNormal} {$image->imageSizes->md->size->width}w,
-                                                    {$image->cURLGross} {$image->imageSizes->lg->size->width}w"
-                                                data=["list"=>"{$image->galleryJSON|escape:"html"}", "index"=>$image@index]
-                                            }
-                                        </div>
-                                    </div>
-                                {/strip}
-                            {/foreach}
-                        {/block}
-                    </div>
-                    {if $Artikel->Bilder|count > 1}
-                        <ul class="slick-dots initial-slick-dots d-lg-none" style="" role="tablist">
-                            {foreach $Artikel->Bilder as $image}
-                                <li class="{if $image@first}slick-active{/if}" role="presentation">
-                                    {button}{/button}
-                                </li>
-                            {/foreach}
-                        </ul>
-                    {/if}
+            <button type="button" class="btn btn-icon btn-secondary animate-pulse fs-lg bg-transparent border-0 position-absolute top-0 end-0 z-2 mt-2 mt-sm-3 me-2 me-sm-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-sm" data-bs-title="{lang key='addToWishlist' section='productDetails'}" aria-label="{lang key='addToWishlist' section='productDetails'}">
+                <i class="ci-heart animate-target"></i>
+            </button>
+            <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded overflow-hidden mb-3 mb-sm-4 mb-md-3 mb-lg-4" href="{$Artikel->Bilder[0]->cURLGross}" data-glightbox data-gallery="product-gallery">
+                <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
+                <div class="ratio hover-effect-target bg-body-tertiary rounded w-100" style="--cz-aspect-ratio: calc(1 * 100%)">
+                    {image alt=$Artikel->Bilder[0]->cAltAttribut
+                        class="w-100 h-100 object-fit-cover"
+                        fluid=true
+                        webp=true
+                        src="{$Artikel->Bilder[0]->cURLGross}"
+                    }
                 </div>
-            {/block}
-            {/col}
-        {/block}
-        {block name='productdetails-image-preview'}
-            {if empty($smarty.get.quickView)}
-            {col cols=12 align-self='end' class='product-detail-image-preview-bar'}
-            {$imageCount = $Artikel->Bilder|count}
-            {$imageCountDefault = 5}
-            {if $imageCount > 1}
-                <div id="gallery_preview_wrapper" class="product-thumbnails-wrapper">
-                    <div id="gallery_preview"
-                         class="product-thumbnails slick-smooth-loading carousel carousel-thumbnails slick-lazy {if $imageCount <= $imageCountDefault}slick-count-default{/if}"
-                         data-slick-type="gallery_preview">
-                        {if $imageCount > $imageCountDefault}
-                            <button class="slick-prev slick-arrow slick-inital-arrow" aria-label="Previous" type="button" style="">Previous</button>
-                        {/if}
-                        {block name='productdetails-image-preview-images'}
-                            {foreach $Artikel->Bilder as $image}
-                                {strip}
-                                <div class="square square-image js-gallery-images
-                                    {if $image@first} preview-first {if $imageCount <= $imageCountDefault} first-ml{/if}
-                                    {elseif $image@index >= $imageCountDefault} d-none{/if}
-                                    {if $image@last && $imageCount <= $imageCountDefault} last-mr{/if}">
-                                    <div class="inner">
-                                        {image alt=$image->cAltAttribut
-                                            class="product-image"
-                                            fluid=true
-                                            lazy=true
-                                            webp=true
-                                            src="{$image->cURLKlein}"
-                                        }
-                                    </div>
+            </a>
+        </div>
+        <div class="collapse d-md-block" id="morePictures">
+            <div class="row row-cols-2 g-3 g-sm-4 g-md-3 g-lg-4 pb-3 pb-sm-4 pb-md-0">
+                {foreach $Artikel->Bilder as $image}
+                    {if !$image@first && $image@index < 5}
+                        <div class="col">
+                            <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded overflow-hidden" href="{$image->cURLGross}" data-glightbox data-gallery="product-gallery">
+                                <i class="ci-zoom-in hover-effect-target fs-3 text-white position-absolute top-50 start-50 translate-middle opacity-0 z-2"></i>
+                                <div class="ratio hover-effect-target bg-body-tertiary rounded w-100" style="--cz-aspect-ratio: calc(1 * 100%)">
+                                    {image alt=$image->cAltAttribut
+                                        class="w-100 h-100 object-fit-cover"
+                                        fluid=true
+                                        lazy=true
+                                        webp=true
+                                        src="{$image->cURLKlein}"
+                                    }
                                 </div>
-                                {/strip}
-                            {/foreach}
-                        {/block}
-                        {if $imageCount > $imageCountDefault}
-                            <button class="slick-next slick-arrow slick-inital-arrow" aria-label="Next" type="button" style="">Next</button>
-                        {/if}
-                    </div>
-                </div>
-            {/if}
-            {/col}
-            {/if}
-        {/block}
-        {/row}
+                            </a>
+                        </div>
+                    {/if}
+                {/foreach}
+            </div>
+        </div>
+        <button type="button" class="btn btn-lg btn-outline-secondary w-100 collapsed d-md-none" data-bs-toggle="collapse" data-bs-target="#morePictures" data-label-collapsed="{lang key='showMorePictures'}" data-label-expanded="{lang key='showLessPictures'}" aria-expanded="false" aria-controls="morePictures">
+            <span data-collapsed-content>{lang key='showMorePictures'}</span>
+            <span data-expanded-content>{lang key='showLessPictures'}</span>
+            <i class="collapse-toggle-icon ci-chevron-down fs-lg ms-2 me-n2"></i>
+        </button>
+        
         {block name='productdetails-image-meta'}
             {foreach $Artikel->Bilder as $image}
                 <meta itemprop="image" content="{$image->cURLNormal}">

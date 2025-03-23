@@ -7,3 +7,8 @@ alwaysApply: true
 # Your rule content
 
 - wir benutzen kein anderes styling als das styling von cart-zilla
+- wir erstellen automatisch alle benötigten sporachvariablen in templates/sellx/locale/de-DE
+- alle smarty variablen bleiben unverändert und werden bevorzugt benutzt
+- sollten smarty variablen nötig sein, werden diese zur benutzung im front end erstellt
+- solten wir funktionen einbauen, die ein *.js benötigen, erstellen wir den benötigten code in templates/sellx/js/custom.js
+- <main class="content-wrapper"> kann am anfang von einer seite weggelassen werden. wir setzen das div bereits in templates/sellx/layout/header.tpl

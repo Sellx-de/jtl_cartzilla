@@ -1,5 +1,4 @@
 {block name='layout-header-nav-icons'}
-    {nav id="shop-nav" right=true class="nav-right order-lg-last nav-icons"}
         {block name='layout-header-nav-icons-include-header-nav-search'}
             {if $Einstellungen.template.header.menu_single_row !== 'Y'}
                 {include file='layout/header_nav_search.tpl' tag='li'}
@@ -57,5 +56,5 @@
         {block name='layout-header-nav-icons-include-cart-dropdown-label'}
             {include file='basket/cart_dropdown_label.tpl'}
         {/block}
-    {/nav}
+
 {/block}

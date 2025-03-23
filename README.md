@@ -87,3 +87,75 @@ A short description of the procedure can be found here:
 * [JTL Community](https://forum.jtl-software.de/) - JTL-Forum 
 * [JTL Shop-Entwicklung](https://gitlab.com/jtl-software/jtl-shop/core) - GitLab Repository
 * [JTL Shop-Builds](https://build.jtl-shop.de/) - Ready-to-use zip archives 
+
+# Waschguru Onlineshop - JTL-Wawi mit Cartzilla Design
+
+Dieses Projekt ist ein JTL-Wawi Onlineshop mit dem Cartzilla Design. Die Implementierung erfolgt schrittweise und behält dabei die bestehende JTL-Wawi Funktionalität bei.
+
+## Projektstruktur
+
+### Wichtige Verzeichnisse
+
+- `templates/sellx/` - Hauptverzeichnis für alle Template-Dateien
+  - `layout/` - Layout-Dateien wie Header und Footer
+  - `boxes/` - Box-Templates für verschiedene Shop-Komponenten
+  - `snippets/` - Wiederverwendbare Template-Snippets
+  - `themes/` - Theme-spezifische Dateien
+  - `assets/` - Statische Assets (CSS, JS, Bilder)
+  - `locale/` - Übersetzungsdateien
+
+### Wichtige Dateien
+
+- `templates/sellx/layout/header.tpl` - Enthält das Haupt-Layout mit `<main class="content-wrapper">`
+- `templates/sellx/js/custom.js` - Benutzerdefinierte JavaScript-Funktionen
+- `templates/sellx/locale/de-DE/` - Deutsche Übersetzungen und Sprachvariablen
+
+## Design-Richtlinien
+
+- Das Design basiert ausschließlich auf dem Cartzilla-Theme
+- Alle Smarty-Variablen bleiben unverändert und werden bevorzugt verwendet
+- Neue Smarty-Variablen werden nur erstellt, wenn sie für das Frontend benötigt werden
+- JavaScript-Funktionalitäten werden in `templates/sellx/js/custom.js` implementiert
+- Das `<main class="content-wrapper">` wird bereits in `header.tpl` gesetzt und sollte nicht in einzelnen Templates wiederholt werden
+
+## Template-Integration
+
+### Kategorien
+- `templates/sellx/boxes/box_categories.tpl` - Haupttemplate für Kategorien
+- `templates/sellx/snippets/categories_recursive.tpl` - Rekursives Template für Unterkategorien
+
+### Produktdetails
+- `templates/sellx/productdetails/index.tpl` - Haupttemplate für Produktdetails
+- `templates/sellx/productdetails/image.tpl` - Template für Produktbilder
+- `templates/sellx/productdetails/price.tpl` - Template für Preisanzeige
+
+### Filter
+- `templates/sellx/snippets/filter/price_slider.tpl` - Template für den Preisfilter
+- `templates/sellx/snippets/filter/box_categories.tpl` - Template für Kategoriefilter
+
+## Entwicklungshinweise
+
+1. Alle neuen Templates sollten dem Cartzilla-Design folgen
+2. Bestehende Smarty-Variablen sollten bevorzugt verwendet werden
+3. Neue Sprachvariablen müssen in `templates/sellx/locale/de-DE/` erstellt werden
+4. JavaScript-Funktionalitäten gehören in `custom.js`
+5. Layout-Strukturen sollten in `header.tpl` und `footer.tpl` zentral verwaltet werden
+
+## Wichtige Smarty-Variablen
+
+- `$Artikel` - Aktueller Artikel
+- `$Kategorie` - Aktuelle Kategorie
+- `$Einstellungen` - Shop-Einstellungen
+- `$Link` - Link-Generator
+- `$smarty.session` - Session-Variablen
+
+## CSS-Klassen
+
+Das Projekt verwendet die Cartzilla CSS-Klassen:
+- `content-wrapper` - Hauptcontainer
+- `container` - Bootstrap Container
+- `row` - Bootstrap Row
+- `col-*` - Bootstrap Spalten
+- `card` - Karten-Layout
+- `btn` - Buttons
+- `form-control` - Formulareingaben

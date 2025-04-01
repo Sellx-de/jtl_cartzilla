@@ -1,76 +1,59 @@
 {block name='snippets-comparelist-dropdown'}
     {block name='snippets-comparelist-dropdown-products'}
-        <div class="comparelist-dropdown-table table-responsive max-h-sm lg-max-h">
+        <div class="widget-cart-item py-2 border-bottom">
             {if JTL\Session\Frontend::getCompareList()->oArtikel_arr|count > 0}
                 {$baseURL = $ShopURL|cat:'/?'|cat:$smarty.const.QUERY_PARAM_COMPARELIST_PRODUCT|cat:'='}
-                <table class="table table-vertical-middle table-img">
-                    <tbody>
+                <div class="widget-cart-body">
                     {foreach JTL\Session\Frontend::getCompareList()->oArtikel_arr as $product}
                         {block name='snippets-comparelist-dropdown-products-body'}
-                            <tr>
-                                <td class="w-100-util">
-                                    {formrow class="align-items-center-util"}
-                                        {col class="col-auto"}
-                                            {block name='snippets-comparelist-dropdown-products-image'}
-                                                {link href=$product->cURLFull}
-                                                    {image lazy=true webp=true
-                                                    src=$product->image->cURLMini
-                                                    srcset="
-                                                        {$product->image->cURLMini}
-                                                        {$product->image->imageSizes->xs->size->width}w,
-                                                        {$product->image->cURLKlein}
-                                                        {$product->image->imageSizes->sm->size->width}w,
-                                                        {$product->image->cURLNormal}
-                                                        {$product->image->imageSizes->md->size->width}w"
-                                                    sizes="45px"
-                                                    alt=$product->cName
-                                                    class="img-sm"}
-                                                {/link}
-                                            {/block}
-                                        {/col}
-                                        {col}
-                                            {block name='snippets-comparelist-dropdown-products-title'}
-                                                {link href=$product->cURLFull}{$product->cName}{/link}
-                                            {/block}
-                                        {/col}
-                                    {/formrow}
-                                </td>
-                                <td  class="text-right-util text-nowrap-util">
-                                    {block name='snippets-comparelist-dropdown-products-remove'}
-                                        {link href="{$baseURL}{$product->kArtikel}"
-                                            class="remove"
-                                            title="{lang section="comparelist" key="removeFromCompareList"}"
-                                            data=["name"=>"Vergleichsliste.remove",
-                                                "toggle"=>"product-actions","bs-toggle"=>"product-actions",
-                                                "value"=>"{ldelim}{'"a"'|escape:'html'}:{$product->kArtikel}{rdelim}"
-                                            ]
-                                        }
-                                            <i class="fas fa-times"></i>
-                                        {/link}
+                            <div class="d-flex align-items-center py-2">
+                                {block name='snippets-comparelist-dropdown-products-image'}
+                                    <a class="d-block flex-shrink-0" href="{$product->cURLFull}">
+                                        <img src="{$product->image->cURLMini}" 
+                                             width="64" 
+                                             alt="{$product->cName}">
+                                    </a>
+                                {/block}
+                                <div class="ps-2">
+                                    {block name='snippets-comparelist-dropdown-products-title'}
+                                        <h6 class="widget-product-title">
+                                            <a href="{$product->cURLFull}">{$product->cName}</a>
+                                        </h6>
                                     {/block}
-                                </td>
-                            </tr>
+                                </div>
+                                <div class="ms-auto">
+                                    {block name='snippets-comparelist-dropdown-products-remove'}
+                                        <a href="{$baseURL}{$product->kArtikel}"
+                                           class="btn btn-link btn-sm text-danger"
+                                           title="{lang section="comparelist" key="removeFromCompareList"}"
+                                           data-name="Vergleichsliste.remove"
+                                           data-bs-toggle="product-actions"
+                                           data-value="{ldelim}{'"a"'|escape:'html'}:{$product->kArtikel}{rdelim}">
+                                            <i class="ci-close"></i>
+                                        </a>
+                                    {/block}
+                                </div>
+                            </div>
                         {/block}
                     {/foreach}
-                    </tbody>
-                </table>
+                </div>
             {/if}
         </div>
     {/block}
     {block name='snippets-comparelist-dropdown-hint'}
-        <div class="comparelist-dropdown-table-body dropdown-body">
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3">
             {if JTL\Session\Frontend::getCompareList()->oArtikel_arr|count <= 1}
                 {block name='snippets-comparelist-dropdown-more-than-one'}
-                    {lang key='productNumberHint' section='comparelist'}
+                    <div class="fs-sm text-muted py-2">{lang key='productNumberHint' section='comparelist'}</div>
                 {/block}
             {else}
                 {block name='snippets-comparelist-dropdown-hint-to-compare'}
-                    {link class="comparelist-dropdown-table-body-button btn btn-block btn-primary btn-sm"
-                        id='nav-comparelist-goto'
-                        href="{get_static_route id='vergleichsliste.php'}"
-                    }
+                    <a class="btn btn-primary btn-sm d-block w-100" 
+                       id='nav-comparelist-goto'
+                       href="{get_static_route id='vergleichsliste.php'}">
+                        <i class="ci-arrow-right fs-xs me-1"></i>
                         {lang key='gotToCompare'}
-                    {/link}
+                    </a>
                 {/block}
             {/if}
         </div>

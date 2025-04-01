@@ -1,45 +1,53 @@
 {block name='snippets-author'}
     {block name='snippets-author-content'}
-        <div class="snippets-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <div class="d-flex align-items-center mb-3" itemprop="author" itemscope itemtype="https://schema.org/Person">
             {block name='snippets-author-title'}
-                {if $showModal|default:true}
-                    {link class="author-modal snippets-author-link"
-                        href="#"
-                        title=$oAuthor->cName
-                        data=["target"=>"#author-{$oAuthor->kContentAuthor}","bs-target"=>"#author-{$oAuthor->kContentAuthor}"]
-                    }
-                        <span itemprop="name">
-                            {$oAuthor->cName}
-                        </span>
-                    {/link}
-                {else}
-                    <span itemprop="name">
-                        {$oAuthor->cName}
-                    </span>
+                {if !empty($oAuthor->cAvatarImgSrcFull)}
+                    <img class="rounded-circle me-2" src="{$oAuthor->cAvatarImgSrcFull}" width="50" alt="{$oAuthor->cName}">
                 {/if}
-                &nbsp;&ndash;&nbsp;
-                {if isset($cDate)}
-                    <span class="creation-date">{$cDate}</span>
-                {/if}
+                <div>
+                    {if $showModal|default:true}
+                        <a class="author-modal text-decoration-none fw-medium" 
+                           href="#" 
+                           title="{$oAuthor->cName}"
+                           data-bs-toggle="modal"
+                           data-bs-target="#author-{$oAuthor->kContentAuthor}">
+                            <span itemprop="name">{$oAuthor->cName}</span>
+                        </a>
+                    {else}
+                        <span class="fw-medium" itemprop="name">{$oAuthor->cName}</span>
+                    {/if}
+                    {if isset($cDate)}
+                        <div class="fs-sm text-muted">{$cDate}</div>
+                    {/if}
+                </div>
             {/block}
             {block name='snippets-author-modal'}
                 {if $showModal|default:true}
-                    {if !empty($oAuthor->cAvatarImgSrcFull)}
-                        {$title = "<img alt='{$oAuthor->cName}' src='{$oAuthor->cAvatarImgSrcFull}' height='80' class='rounded-circle' /><span itemprop='name' class='snippets-author-title'>{$oAuthor->cName}</span>"}
-                    {else}
-                        {$title = "<span itemprop='name' class='snippets-author-title'>"|cat:$oAuthor->cName|cat:'</span>'}
-                    {/if}
-                    <div id="author-{$oAuthor->kContentAuthor}" title="{$title}" class="d-none">
-                        {block name='snippets-author-modal-content'}
-                            {if !empty($oAuthor->cVitaShort)}
-                                {if !empty($oAuthor->cAvatarImgSrcFull)}
-                                    <meta itemprop="image" content="{$oAuthor->cAvatarImgSrcFull}">
-                                {/if}
-                                <div itemprop="description">
-                                    {$oAuthor->cVitaShort}
+                    <div class="modal fade" id="author-{$oAuthor->kContentAuthor}" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="d-flex align-items-center">
+                                        {if !empty($oAuthor->cAvatarImgSrcFull)}
+                                            <img alt="{$oAuthor->cName}" src="{$oAuthor->cAvatarImgSrcFull}" width="60" class="rounded-circle me-3">
+                                            <meta itemprop="image" content="{$oAuthor->cAvatarImgSrcFull}">
+                                        {/if}
+                                        <h5 class="modal-title" itemprop="name">{$oAuthor->cName}</h5>
+                                    </div>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                            {/if}
-                        {/block}
+                                <div class="modal-body">
+                                    {block name='snippets-author-modal-content'}
+                                        {if !empty($oAuthor->cVitaShort)}
+                                            <div itemprop="description">
+                                                {$oAuthor->cVitaShort}
+                                            </div>
+                                        {/if}
+                                    {/block}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 {/if}
             {/block}

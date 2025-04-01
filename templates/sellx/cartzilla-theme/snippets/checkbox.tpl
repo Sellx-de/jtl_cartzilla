@@ -10,34 +10,38 @@
     {if !empty($checkboxes)}
         {block name='snippets-checkbox-checkboxes'}
             {foreach $checkboxes as $cb}
-                {formgroup class="snippets-checkbox-wrapper exclude-from-label-slide" label-for=" " description="{if !empty($cb->cBeschreibung)}{$cb->cBeschreibung}{/if}"}
+                <div class="form-check mb-3">
                     {block name='snippets-checkbox-checkbox'}
                         {if $cb->identifier!=='RightOfWithdrawalOfDownloadItems' || ($cb->identifier==='RightOfWithdrawalOfDownloadItems' && (isset($hasDownloads) && $hasDownloads === true))}
-                            {checkbox
-                                id="{if isset($cIDPrefix)}{$cIDPrefix}_{/if}{$cb->cID}"
-                                name={$cb->cID}
-                                required=$cb->nPflicht === 1
-                                checked=$cb->isActive
-                            }
+                            <input class="form-check-input" 
+                                   type="checkbox" 
+                                   id="{if isset($cIDPrefix)}{$cIDPrefix}_{/if}{$cb->cID}" 
+                                   name="{$cb->cID}" 
+                                   {if $cb->nPflicht === 1}required{/if}
+                                   {if $cb->isActive}checked{/if}>
+                            <label class="form-check-label" for="{if isset($cIDPrefix)}{$cIDPrefix}_{/if}{$cb->cID}">
                                 {block name='snippets-checkbox-checkbox-name'}
                                    {nl2br($cb->cName)}
                                 {/block}
                                 {if !empty($cb->cLinkURL)}
                                     {block name='snippets-checkbox-checkbox-more-link'}
                                         <span class='moreinfo'>
-                                            ({link href=$cb->cLinkURL class='popup checkbox-popup'}{lang key='read' section='account data'}{/link})
+                                            (<a href="{$cb->cLinkURL}" class="text-decoration-underline popup checkbox-popup">{lang key='read' section='account data'}</a>)
                                         </span>
                                     {/block}
                                 {/if}
                                 {if empty($cb->nPflicht)}
                                     {block name='snippets-checkbox-checkbox-optional'}
-                                        <span class='optional'> - {lang key='optional'}</span>
+                                        <span class='text-muted'> - {lang key='optional'}</span>
                                     {/block}
                                 {/if}
-                            {/checkbox}
+                            </label>
+                            {if !empty($cb->cBeschreibung)}
+                                <div class="form-text">{$cb->cBeschreibung}</div>
+                            {/if}
                         {/if}
                     {/block}
-                {/formgroup}
+                </div>
             {/foreach}
         {/block}
     {/if}

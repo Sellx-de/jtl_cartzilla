@@ -30,6 +30,7 @@
                 {get_category_array categoryId=$categoryId categoryBoxNumber=$categoryBoxNumber assign='categories'}
             {/if}
             {if !empty($categories)}
+                <ul class="widget-list">
                 {block name='snippets-categories-recursive-categories'}
                     {foreach $categories as $category}
                         {assign var=hasItems value=false}
@@ -41,18 +42,21 @@
                         {/if}
                         {if $hasItems}
                             {block name='snippets-categories-recursive-categories-has-items'}
-                                <li class="nav-item mb-1 {if $category->getID() == $activeId
-                                    || (isset($activeParent)
-                                        && $activeParent->getID() === $category->getID())}{/if}">
+                                <li class="widget-list-item {if $category->getID() == $activeId || (isset($activeParent) && $activeParent->getID() === $category->getID())}active{/if}">
                                     {block name='snippets-categories-recursive-categories-has-items-link'}
-                                            <a class="nav-link d-block fw-normal p-0" href="{$category->getURL()}" onclick="event.stopPropagation();">{$category->getShortName()}</a>
+                                        <a class="widget-list-link d-flex justify-content-between align-items-center" 
+                                           href="{$category->getURL()}" 
+                                           data-bs-toggle="collapse" 
+                                           data-bs-target="#category_box_{$category->getID()}_{$i}-{$id}" 
+                                           aria-expanded="{if $category->getID() == $activeId || (isset($activeParent) && $activeParent->getID() === $category->getID())}true{else}false{/if}">
+                                            {$category->getShortName()}
+                                            <span class="accordion-indicator"></span>
+                                        </a>
                                     {/block}
                                     {block name='snippets-categories-recursive-categories-has-items-nav'}
-                                        {collapse id="category_box_{$category->getID()}_{$i}-{$id}"
-                                             class="snippets-categories-collapse {if $category->getID() == $activeId
-                                                || (isset($activeParent)
-                                                && $activeParent->getID() === $category->getID())}show{/if}"}
-                                            {nav vertical=true}
+                                        <div id="category_box_{$category->getID()}_{$i}-{$id}" 
+                                             class="collapse {if $category->getID() == $activeId || (isset($activeParent) && $activeParent->getID() === $category->getID())}show{/if}">
+                                            <ul class="widget-list ps-3">
                                                 {block name='snippets-categories-recursive-include-categories-recursive'}
                                                     {if $category->hasChildren()}
                                                         {include file='snippets/categories_recursive.tpl'
@@ -73,24 +77,23 @@
                                                             id=$id}
                                                     {/if}
                                                 {/block}
-                                            {/nav}
-                                        {/collapse}
+                                            </ul>
+                                        </div>
                                     {/block}
                                 </li>
                             {/block}
                         {else}
                             {block name='snippets-categories-recursive-has-not-items'}
-                                {navitem class="{if $category->getID() == $activeId
-                                        || (isset($activeParent)
-                                        && $activeParent->getID() === $category->getID())}  mb-1{/if}"
-                                    href=$category->getURL()
-                                    router-class="{if $i !== 0}snippets-categories-nav-link-child{/if}"}
-                                    {$category->getShortName()}
-                                {/navitem}
+                                <li class="widget-list-item {if $category->getID() == $activeId || (isset($activeParent) && $activeParent->getID() === $category->getID())}active{/if}">
+                                    <a class="widget-list-link" href="{$category->getURL()}">
+                                        {$category->getShortName()}
+                                    </a>
+                                </li>
                             {/block}
                         {/if}
                     {/foreach}
                 {/block}
+                </ul>
             {/if}
         {/strip}
     {/if}

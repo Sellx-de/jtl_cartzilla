@@ -6,13 +6,13 @@
     {/if}
 {/foreach}
 {block name='snippets-comparelist-button-main'}
-    {button name="Vergleichsliste"
-        type="submit"
-        class="{$classes|default:''} compare badge badge-circle-1 action-tip-animation-b {if $isOnCompareList}on-list{/if}"
-        aria=["label" => {lang key='addToCompare' section='productOverview'}]
-        data=["product-id-cl" => $Artikel->kArtikel, "toggle"=>"tooltip","bs-toggle"=>"tooltip", "trigger"=>"hover"]
-        title={lang key='addToCompare' section='productOverview'}
-    }
-        <span class="far fa-list-alt"></span>
-    {/button}
+    <button type="button" 
+            class="btn-compare btn-sm {$classes|default:''} {if $isOnCompareList}active{/if}" 
+            data-product-id-cl="{$Artikel->kArtikel}"
+            data-bs-toggle="tooltip"
+            data-bs-placement="left"
+            title="{lang key='addToCompare' section='productOverview'}"
+            aria-label="{lang key='addToCompare' section='productOverview'}">
+        <i class="ci-compare"></i>
+    </button>
 {/block}

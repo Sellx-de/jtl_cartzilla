@@ -3,59 +3,62 @@
         {$max_subsub_items="{if $isMobile}5{else}2{/if}"}
     {/block}
     {block name='snippets-categories-mega-recursive-main-link'}
-        {link href=$mainCategory->getURL()
-            class="categories-recursive-link d-lg-block {if $firstChild}submenu-headline submenu-headline-toplevel{/if} {$subCategory} {if $mainCategory->hasChildren() && $subCategory < $max_subsub_items && $Einstellungen.template.megamenu.show_subcategories !== 'N'}nav-link dropdown-toggle{/if}"
-            aria=["expanded"=>"false"]
-            data=["category-id"=>$mainCategory->getID()]}
+        <a href="{$mainCategory->getURL()}"
+           class="{if $firstChild}nav-link dropdown-item{else}dropdown-item{/if} {if $mainCategory->hasChildren() && $subCategory < $max_subsub_items && $Einstellungen.template.megamenu.show_subcategories !== 'N'}dropdown-toggle{/if}"
+           {if $mainCategory->hasChildren() && $subCategory < $max_subsub_items && $Einstellungen.template.megamenu.show_subcategories !== 'N'}
+           data-bs-toggle="dropdown"
+           {/if}
+           aria-expanded="false"
+           data-category-id="{$mainCategory->getID()}">
             {if $firstChild
                 && $Einstellungen.template.megamenu.show_category_images !== 'N'
                 && (!$isMobile || $isTablet)}
                 {$imgAlt = $mainCategory->getAttribute('img_alt')}
-                {include file='snippets/image.tpl'
-                    class='submenu-headline-image'
-                    item=$mainCategory
-                    square=false
-                    srcSize='sm'
-                    alt="{if empty($imgAlt->cWert)}{$mainCategory->getName()|escape:'html'}{else}{$imgAlt->cWert}{/if}"}
+                <div class="dropdown-item-icon">
+                    {include file='snippets/image.tpl'
+                        class='rounded-circle'
+                        item=$mainCategory
+                        square=true
+                        srcSize='xs'
+                        width=20
+                        height=20
+                        alt="{if empty($imgAlt->cWert)}{$mainCategory->getName()|escape:'html'}{else}{$imgAlt->cWert}{/if}"}
+                </div>
             {/if}
-            <span class="text-truncate d-block">
-                {$mainCategory->getShortName()}{if $mainCategory->hasChildren() && $subCategory >= $max_subsub_items}<span class="more-subcategories">&nbsp;({$mainCategory->getChildren()|count})</span>{/if}
+            <span>
+                {$mainCategory->getShortName()}{if $mainCategory->hasChildren() && $subCategory >= $max_subsub_items}<span class="fs-xs text-muted ms-1">({$mainCategory->getChildren()|count})</span>{/if}
             </span>
-        {/link}
+        </a>
     {/block}
     {if $mainCategory->hasChildren() && $Einstellungen.template.megamenu.show_subcategories !== 'N' && $subCategory < $max_subsub_items}
         {block name='snippets-categories-mega-recursive-child-content'}
-            <div class="categories-recursive-dropdown dropdown-menu" data-bs-popper="static" style="filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));">
-                {nav}
+            <div class="dropdown-menu" data-bs-popper="static">
+                <div class="dropdown-inner">
                     {block name='snippets-categories-mega-recursive-child-header'}
-                        <li class="nav-item d-lg-none">
-                            {link href=$mainCategory->getURL()}
-                                <strong class="nav-mobile-heading">
-                                    {lang key='menuShow' printf=$mainCategory->getShortName()}
-                                </strong>
-                            {/link}
-                        </li>
+                        <div class="d-lg-none">
+                            <a class="dropdown-item border-bottom text-uppercase fw-medium" href="{$mainCategory->getURL()}">
+                                {lang key='menuShow' printf=$mainCategory->getShortName()}
+                            </a>
+                        </div>
                     {/block}
                     {block name='snippets-categories-mega-recursive-child-categories'}
                         {foreach $mainCategory->getChildren() as $category}
                             {if $category->hasChildren() && $subCategory + 1 < $max_subsub_items}
                                 {block name='snippets-categories-mega-recursive-child-category-child'}
-                                    <li class="nav-item dropdown">
+                                    <div class="dropdown">
                                         {include file='snippets/categories_mega_recursive.tpl' mainCategory=$category firstChild=false subCategory=$subCategory + 1}
-                                    </li>
+                                    </div>
                                 {/block}
                             {else}
                                 {block name='snippets-categories-mega-recursivechild-category-no-child'}
-                                    {navitem href=$category->getURL() data=["category-id"=>$category->getID()]}
-                                        <span class="text-truncate d-block">
-                                            {$category->getShortName()}{if $category->hasChildren()}<span class="more-subcategories">&nbsp;({$category->getChildren()|count})</span>{/if}
-                                        </span>
-                                    {/navitem}
+                                    <a class="dropdown-item" href="{$category->getURL()}" data-category-id="{$category->getID()}">
+                                        {$category->getShortName()}{if $category->hasChildren()}<span class="fs-xs text-muted ms-1">({$category->getChildren()|count})</span>{/if}
+                                    </a>
                                 {/block}
                             {/if}
                         {/foreach}
                     {/block}
-                {/nav}
+                </div>
             </div>
         {/block}
     {/if}

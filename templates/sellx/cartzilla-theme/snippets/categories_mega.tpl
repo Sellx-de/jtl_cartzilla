@@ -40,20 +40,21 @@
                                 {else}
                                     {get_category_array categoryId=$category->getID() assign='sub_categories'}
                                 {/if}
-<div class="col-lg-2">
-                                    {foreach $sub_categories as $sub}
-                                        <ul class="nav flex-column gap-2 mt-0">
-                                            <li class="d-flex w-100 pt-1">
-                                                <a class="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0" href="{$sub->getURL()}">{$sub->getName()}</a>
-                                            </li>
-                                        </ul>
-                                    {/foreach}
-                                   
-
-                                        <a class="d-inline-flex animate-underline h6 text-dark-emphasis text-decoration-none mb-2" href="{$category->getURL()}">
-                                            <span class="animate-target">{lang key='showAll'}</span>	
-                                        </a>
- </div>
+<div class="mega-dropdown-column py-4 px-3">
+    <div class="widget widget-links">
+        <h6 class="fs-base mb-3">{$category->getName()}</h6>
+        <ul class="widget-list">
+            {foreach $sub_categories as $sub}
+                <li class="widget-list-item">
+                    <a class="widget-list-link" href="{$sub->getURL()}">{$sub->getName()}</a>
+                </li>
+            {/foreach}
+        </ul>
+        <a class="fs-sm" href="{$category->getURL()}">
+            {lang key='showAll'} <i class="ci-arrow-right fs-xs ms-1"></i>
+        </a>
+    </div>
+</div>
                             {/if}
                         
                     {/if}

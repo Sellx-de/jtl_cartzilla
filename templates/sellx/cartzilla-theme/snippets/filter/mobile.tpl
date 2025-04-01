@@ -2,37 +2,40 @@
     {if $isMobile && !$isTablet}
         <span class="h2 snippets-filter-mobile-heading" id="productlist-filter">{lang key='filterAndSort'}</span>
     {/if}
-    <div class="productlist-filter-wrapper dropdown-full-width">
+    <div class="productlist-filter-wrapper">
         {block name='snippets-filter-mobile-top-include-active-filter'}
-            <div class="productlist-applied-filter productlist-applied-filter-top">
+            <div class="productlist-applied-filter mb-4">
                 {include file='snippets/filter/active_filter.tpl'}
             </div>
         {/block}
-        <ul class="productlist-filter-accordion border-md-bottom border-lg-bottom-0">
+        <div class="accordion accordion-flush" id="productFilterAccordion">
         {block name='snippets-filter-mobile-sorting'}
             {if count($Suchergebnisse->getSortingOptions()) > 0}
-            <li class="snippets-filter-mobile-sorting">
-                {link class="snippets-filter-mobile-sorting-link filter-type-FilterItemSort"
-                    data=["toggle"=> "collapse","bs-toggle"=> "collapse", "target"=>"#sorting-collapse","bs-target"=>"#sorting-collapse"]
-                    rel="nofollow"}
-                    {lang key='sorting' section='productOverview'}
-                    <span class="font-italic text-truncate">
-                        {foreach $Suchergebnisse->getSortingOptions() as $option}
-                            {if $option->isActive()} {$option->getName()}{/if}
-                        {/foreach}
-                    </span>
-                {/link}
-                {collapse id="sorting-collapse" class="snippets-filter-mobile-sorting-collapse"}
-                    {foreach $Suchergebnisse->getSortingOptions() as $option}
-                        {dropdownitem class="filter-item"
-                            active=$option->isActive()
-                            href=$option->getURL()
-                            rel='nofollow'}
-                        {$option->getName()}
-                        {/dropdownitem}
-                    {/foreach}
-                {/collapse}
-            </li>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sorting-collapse" aria-expanded="false" aria-controls="sorting-collapse">
+                        {lang key='sorting' section='productOverview'}
+                        <span class="fst-italic text-truncate ms-2">
+                            {foreach $Suchergebnisse->getSortingOptions() as $option}
+                                {if $option->isActive()} {$option->getName()}{/if}
+                            {/foreach}
+                        </span>
+                    </button>
+                </h3>
+                <div id="sorting-collapse" class="accordion-collapse collapse" data-bs-parent="#productFilterAccordion">
+                    <div class="accordion-body">
+                        <div class="list-group list-group-flush">
+                            {foreach $Suchergebnisse->getSortingOptions() as $option}
+                                <a class="list-group-item list-group-item-action {if $option->isActive()}active{/if}"
+                                   href="{$option->getURL()}"
+                                   rel="nofollow">
+                                    {$option->getName()}
+                                </a>
+                            {/foreach}
+                        </div>
+                    </div>
+                </div>
+            </div>
             {/if}
         {/block}
         {if $show_filters}

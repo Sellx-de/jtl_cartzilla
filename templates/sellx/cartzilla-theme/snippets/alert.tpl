@@ -1,21 +1,22 @@
 {block name='snippets-alert'}
-    {alert
-        variant={$alert->getCssType()}
-        data=["fade-out"=>{$alert->getFadeOut()}, "key"=>{$alert->getKey()}]
-        id="{if $alert->getId()}{$alert->getId()}{/if}"
-        class="alert-wrapper"
-    }
+    <div class="alert alert-{$alert->getCssType()} alert-dismissible fade show alert-wrapper" 
+         role="alert"
+         {if $alert->getFadeOut()}data-fade-out="{$alert->getFadeOut()}"{/if}
+         {if $alert->getKey()}data-key="{$alert->getKey()}"{/if}
+         {if $alert->getId()}id="{$alert->getId()}"{/if}>
         {if $alert->getIcon()}
-            <i class="fas fa-{if $alert->getIcon() === 'warning'}exclamation-triangle{else}{$alert->getIcon()}{/if}"></i>
+            <i class="ci-{if $alert->getIcon() === 'warning'}warning{elseif $alert->getIcon() === 'check'}check-circle{elseif $alert->getIcon() === 'info'}announcement{else}{$alert->getIcon()}{/if} me-2"></i>
         {/if}
-        {if $alert->getDismissable()}<div class="close">&times;</div>{/if}
         {if !empty($alert->getLinkHref()) && empty($alert->getLinkText())}
-            {link href=$alert->getLinkHref()}{$alert->getMessage()}{/link}
+            <a href="{$alert->getLinkHref()}" class="alert-link">{$alert->getMessage()}</a>
         {elseif !empty($alert->getLinkHref()) && !empty($alert->getLinkText())}
             {$alert->getMessage()}
-            {link href=$alert->getLinkHref()}{$alert->getLinkText()}{/link}
+            <a href="{$alert->getLinkHref()}" class="alert-link">{$alert->getLinkText()}</a>
         {else}
             {$alert->getMessage()}
         {/if}
-    {/alert}
+        {if $alert->getDismissable()}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {/if}
+    </div>
 {/block}
